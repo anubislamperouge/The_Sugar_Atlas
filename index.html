@@ -27,18 +27,22 @@
 
     <div id="particles-js"></div>
 
-    <nav id="main-nav" class="hidden">
+    <nav id="main-nav" class="hidden" style="padding: 1.5rem 8%;"> 
         <div class="nav-left">
-            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer">THE SUGAR ATLAS</div>
-            <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
+            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer; font-size: 1.8rem; letter-spacing: 8px;">THE SUGAR ATLAS</div>
+            <div class="rank-tag" style="margin-top: 5px; letter-spacing: 2px;">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
         </div>
+        
         <div class="nav-right" style="display: flex; align-items: center;">
             <button onclick="showAbout()" class="nav-map-btn">ℹ️ ABOUT</button>
             <button onclick="showBakeryMap()" class="nav-map-btn">📍 NEAR ME</button>
             
-            <div class="passport-stats">
-                <span class="stat-label">STAMPS</span>
-                <span id="stamp-count">0</span><span class="total">/30</span>
+            <div class="passport-stats" style="margin-left: 20px; text-align: right;">
+                <span class="stat-label" style="display: block; font-size: 0.7rem; letter-spacing: 2px;">STAMPS</span>
+                <div style="display: flex; align-items: baseline; gap: 5px; justify-content: flex-end;">
+                    <span id="stamp-count" style="font-size: 1.4rem; color: var(--gold);">0</span>
+                    <span class="total" style="opacity: 0.5;">/ 30</span>
+                </div>
                 <div class="progress-bar-mini"><div id="progress-fill"></div></div>
             </div>
         </div>
@@ -65,35 +69,94 @@
     </section>
 
     <section id="bakery-page" class="hidden">
-        <div class="bakery-header hero-centered">
-            <h1 class="font-mileast">SUGAR ATLAS: NEAR YOU</h1>
-            <p class="subtitle">Real-world pastry destinations in the UAE</p>
-            <button onclick="returnToTerminal()" class="gold-btn mini" style="margin-bottom:40px;">RETURN TO ATLAS</button>
+    <div class="bakery-header hero-centered">
+        <h1 class="font-mileast">SUGAR ATLAS: UAE SELECTION</h1>
+        <p class="subtitle">10 Iconic nationwide destinations for your dessert passport</p>
+        <button onclick="returnToTerminal()" class="gold-btn mini" style="margin-bottom:40px;">RETURN TO ATLAS</button>
+    </div>
+
+    <div class="bakery-grid">
+        <div class="bakery-card">
+            <div class="location-pin">📍 DUBAI / ABU DHABI</div>
+            <h3>PAUL Bakery & Restaurant</h3>
+            <p class="bakery-vibe">Classic French bakery serving croissants and artisanal breads.</p>
+            <p><strong>SIGNATURE:</strong> Mille-Feuille</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
         </div>
-        <div class="bakery-grid">
-            <div class="bakery-card">
-                <div class="location-pin">📍 DUBAI</div>
-                <h3>L’ETO Café</h3>
-                <p class="bakery-vibe">Luxury dessert café with a floral atmosphere.</p>
-                <p><strong>SIGNATURE:</strong> Lotus Cheesecake</p>
-                <div class="rating">⭐⭐⭐⭐⭐</div>
-            </div>
-            <div class="bakery-card">
-                <div class="location-pin">📍 ABU DHABI</div>
-                <h3>Switch</h3>
-                <p class="bakery-vibe">Modern, futuristic dining experience.</p>
-                <p><strong>SIGNATURE:</strong> Camel Milk Chocolate</p>
-                <div class="rating">⭐⭐⭐⭐</div>
-            </div>
-            <div class="bakery-card">
-                <div class="location-pin">📍 DUBAI</div>
-                <h3>Home Bakery</h3>
-                <p class="bakery-vibe">Cozy, rustic vibes and homemade goodness.</p>
-                <p><strong>SIGNATURE:</strong> Chewy Melt Cookies</p>
-                <div class="rating">⭐⭐⭐⭐⭐</div>
-            </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 DUBAI / ABU DHABI</div>
+            <h3>Ladurée</h3>
+            <p class="bakery-vibe">Luxury Parisian pâtisserie famous for elegant desserts.</p>
+            <p><strong>SIGNATURE:</strong> Signature Macarons</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
         </div>
-    </section>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 DUBAI / ABU DHABI</div>
+            <h3>Magnolia Bakery</h3>
+            <p class="bakery-vibe">Iconic American bakery known for New York style sweets.</p>
+            <p><strong>SIGNATURE:</strong> Banana Pudding</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 NATIONWIDE</div>
+            <h3>Home Bakery</h3>
+            <p class="bakery-vibe">Beloved local café famous for comfort desserts.</p>
+            <p><strong>SIGNATURE:</strong> Chewy Melt Cookies</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 DUBAI / UAE</div>
+            <h3>Bakerist</h3>
+            <p class="bakery-vibe">Trendy artisan bakery known for creative croissants.</p>
+            <p><strong>SIGNATURE:</strong> Modern Pastries</p>
+            <div class="rating">⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 DUBAI / ABU DHABI</div>
+            <h3>SugarMoo Desserts</h3>
+            <p class="bakery-vibe">UAE-born brand famous for indulgent, fun cakes.</p>
+            <p><strong>SIGNATURE:</strong> Red Velvet Oreo Cake</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 ABU DHABI / UAE</div>
+            <h3>Pinkberry Bakery</h3>
+            <p class="bakery-vibe">Modern bakery offering premium dessert selections.</p>
+            <p><strong>SIGNATURE:</strong> Custom Cakes</p>
+            <div class="rating">⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 SHARJAH / UAE</div>
+            <h3>Shami Gourmet Bakery</h3>
+            <p class="bakery-vibe">Traditional Middle Eastern sweets and fresh goods.</p>
+            <p><strong>SIGNATURE:</strong> Baklava Selection</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 SHARJAH / UAE</div>
+            <h3>Kandil Bakery</h3>
+            <p class="bakery-vibe">Famous for authentic Arabic pastries and breads.</p>
+            <p><strong>SIGNATURE:</strong> Arabic Sweets</p>
+            <div class="rating">⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="bakery-card">
+            <div class="location-pin">📍 NATIONWIDE</div>
+            <h3>Mister Baker</h3>
+            <p class="bakery-vibe">Nationwide chain specializing in celebration cakes.</p>
+            <p><strong>SIGNATURE:</strong> Custom Celebration Cakes</p>
+            <div class="rating">⭐⭐⭐⭐</div>
+        </div>
+    </div>
+</section>
 
     <div id="transit-overlay" class="hidden">
         <div class="flight-path"><div class="plane" style="font-size: 4rem;">✈️</div></div>
@@ -105,13 +168,4 @@
         <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
     </div>
 
-    <section id="recipe-page" class="hidden">
-        <div class="recipe-wrapper">
-            <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
-            <div id="recipe-content"></div>
-        </div>
-    </section>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    <section id="recipe
