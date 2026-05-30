@@ -1,120 +1,79 @@
-/* Color Scheme: Cream, Beige, Warm Brown, Soft Pink */
 :root {
-    --cream: #FFF8F0;
-    --beige: #F4E4BA;
-    --brown: #6D4C41;
-    --pink: #F8BBD0;
+    --bg-dark: #0a192f;
+    --accent-beige: #e6e1d3;
+    --text-light: #f8f9fa;
+    --navy-blue: #172a45;
 }
 
 body {
-    background-color: var(--cream);
-    color: var(--brown);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--accent-beige);
+    font-family: 'Inter', sans-serif;
     margin: 0;
-    line-height: 1.6;
-}
-
-/* Header & Nav */
-header {
-    background-color: var(--pink);
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow-x: hidden;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 20px 5%;
+    border-bottom: 1px solid rgba(230, 225, 211, 0.2);
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: var(--brown);
-    font-weight: bold;
-    padding: 0 15px;
-    transition: color 0.3s; /* Hover effect requirement */
-}
-
-nav ul li a:hover {
-    color: white;
-}
-
-/* Hero Section */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: linear-gradient(rgba(255,248,240,0.8), rgba(255,248,240,0.8)), url('images/map-bg.jpg');
-    background-size: cover;
-}
-
-/* Flexbox Grid [cite: 47] */
+/* The Game Grid */
 .destination-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
-    padding: 40px;
+    padding: 5%;
 }
 
-.destination-card {
-    background: white;
-    border-radius: 20px;
-    width: 300px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.3s;
-}
-
-.destination-card:hover {
-    transform: translateY(-10px); /* Hover effect [cite: 49] */
-}
-
-.dessert-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 20px;
+.country-card {
+    background: var(--navy-blue);
+    padding: 30px;
+    border: 1px solid var(--accent-beige);
     text-align: center;
-}
-
-.ticket-btn {
-    background-color: var(--brown);
-    color: white;
-    border: none;
-    padding: 10px 25px;
-    border-radius: 50px;
     cursor: pointer;
-    font-size: 1rem;
+    transition: all 0.4s ease; /* Hover effect [cite: 49] */
 }
 
-/* Progress Section */
-.progress-container {
-    width: 80%;
-    background-color: #ddd;
-    margin: 20px auto;
-    border-radius: 20px;
+.country-card:hover {
+    background: var(--accent-beige);
+    color: var(--bg-dark);
+    transform: scale(1.05);
 }
 
-#progress-bar {
-    width: 0%;
-    height: 20px;
-    background-color: var(--pink);
-    border-radius: 20px;
-    transition: width 0.5s;
+/* Transit Animation [cite: 20] */
+#transit-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-/* Responsive Design [cite: 48] */
-@media (max-width: 600px) {
-    .destination-grid {
-        flex-direction: column;
-        align-items: center;
-    }
+.plane-icon {
+    font-size: 5rem;
+    animation: fly 2s infinite linear;
+}
+
+@keyframes fly {
+    0% { transform: translateX(-100vw); }
+    100% { transform: translateX(100vw); }
+}
+
+.hidden { display: none !important; }
+
+/* Recipe Page */
+#recipe-page { padding: 5%; animation: fadeIn 1s; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.stamp-unlocked {
+    background: gold !important;
+    color: black;
 }
