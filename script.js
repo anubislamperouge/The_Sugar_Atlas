@@ -1,65 +1,64 @@
-// Data for 30 Desserts (Shortened for example, you can add all 30 here)
-const travelData = [
-    { country: "France", dessert: "Macarons", recipe: "1. Sift flour... 2. Bake... 3. Fill." },
-    { country: "Italy", dessert: "Tiramisu", recipe: "1. Brew coffee... 2. Layer cream... 3. Chill." },
-    { country: "Japan", dessert: "Mochi", recipe: "1. Steam rice... 2. Pound... 3. Stuff with bean paste." },
-    { country: "Mexico", dessert: "Churros", recipe: "1. Fry dough... 2. Roll in sugar... 3. Dip in chocolate." },
-    // ... Add more up to 30
+// Data for 30 Desserts
+const atlasData = [
+    { country: "FRANCE", dessert: "Macarons", pic: "images/france.jpg", recipe: "Delicate almond meringue shells sandwiched with ganache." },
+    { country: "JAPAN", dessert: "Mochi", pic: "images/japan.jpg", recipe: "Sweet pounded rice dough filled with red bean or cream." },
+    { country: "ITALY", dessert: "Tiramisu", pic: "images/italy.jpg", recipe: "Coffee-soaked ladyfingers layered with mascarpone cream." },
+    { country: "TURKEY", dessert: "Baklava", pic: "images/turkey.jpg", recipe: "Layers of phyllo pastry filled with chopped nuts and syrup." },
+    { country: "MEXICO", dessert: "Churros", pic: "images/mexico.jpg", recipe: "Fried dough pastry rolled in cinnamon sugar." },
+    // Repeat/Add until 30...
 ];
 
-const stampCountEl = document.getElementById('stamp-count');
-let collectedStamps = new Set();
-
-// 1. Generate the Airport Grid
 const grid = document.getElementById('dest-grid');
+let stamps = new Set();
 
-travelData.forEach(item => {
+// Populate the Terminal
+atlasData.forEach(item => {
     const card = document.createElement('div');
     card.className = 'country-card';
-    card.innerHTML = `<h3>${item.country}</h3><p>Status: Unvisited</p>`;
+    card.innerHTML = `<h3 class="font-mileast">${item.country}</h3><p>READY FOR BOARDING</p>`;
     card.onclick = () => startTransit(item);
     grid.appendChild(card);
 });
 
-// 2. The Transit Animation System
 function startTransit(item) {
     const overlay = document.getElementById('transit-overlay');
-    const targetText = document.getElementById('target-country');
-    
-    targetText.innerText = item.country;
+    document.getElementById('target-country').innerText = item.country;
     overlay.classList.remove('hidden');
 
-    // Simulate flight time
     setTimeout(() => {
         overlay.classList.add('hidden');
         showRecipe(item);
     }, 2000);
 }
 
-// 3. Show Recipe and Log Stamp
 function showRecipe(item) {
-    document.getElementById('airport-screen').classList.add('hidden');
-    const recipePage = document.getElementById('recipe-page');
-    recipePage.classList.remove('hidden');
+    document.getElementById('terminal').classList.add('hidden');
+    const page = document.getElementById('recipe-page');
+    page.classList.remove('hidden');
 
     document.getElementById('recipe-content').innerHTML = `
-        <h1>${item.dessert} (${item.country})</h1>
+        <h1 class="font-mileast">${item.dessert}</h1>
+        <p>Origin: ${item.country}</p>
+        <img src="${item.pic}" alt="${item.dessert}" class="dessert-pic">
         <div class="recipe-box">
-            <h3>Secret Recipe</h3>
+            <h3>THE METHOD</h3>
             <p>${item.recipe}</p>
         </div>
-        <button class="stamp-btn" onclick="collectStamp('${item.country}')">Claim Passport Stamp</button>
+        <button class="stamp-btn" onclick="collectStamp('${item.country}')" style="margin-top:20px; padding:10px 30px; background:transparent; color:var(--gold); border:1px solid var(--gold); cursor:pointer;">
+            COLLECT PASSPORT STAMP
+        </button>
     `;
 }
 
 function collectStamp(country) {
-    collectedStamps.add(country);
-    stampCountEl.innerText = collectedStamps.size;
-    alert(`Stamp for ${country} added to your passport!`);
-    returnToAirport();
+    stamps.add(country);
+    document.getElementById('stamp-count').innerText = stamps.size;
+    alert(`Entry Stamp: ${country} secured.`);
+    returnToTerminal();
 }
 
-function returnToAirport() {
+function returnToTerminal() {
     document.getElementById('recipe-page').classList.add('hidden');
-    document.getElementById('airport-screen').classList.remove('hidden');
+    document.getElementById('terminal').classList.remove('hidden');
+    window.scrollTo(0,0);
 }
