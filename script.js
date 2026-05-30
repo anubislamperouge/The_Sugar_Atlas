@@ -155,3 +155,55 @@ function createHeroEffects() {
 // START THE APP
 createHeroEffects();
 initAtlas();
+
+// --- NEW NAVIGATION LOGIC ---
+
+// 1. Enter the Hub from the Intro Page
+function enterHub() {
+    const intro = document.getElementById('intro-page');
+    const nav = document.getElementById('main-nav');
+    const terminal = document.getElementById('terminal');
+
+    if(intro) intro.classList.add('hidden');
+    if(nav) nav.classList.remove('hidden');
+    if(terminal) terminal.classList.remove('hidden');
+    
+    // Ensure the atlas is fresh when we enter
+    initAtlas(); 
+}
+
+// 2. Transition to the Real World Bakery Page
+function showBakeryMap() {
+    const terminal = document.getElementById('terminal');
+    const recipePage = document.getElementById('recipe-page');
+    const bakeryPage = document.getElementById('bakery-page');
+
+    if(terminal) terminal.classList.add('hidden');
+    if(recipePage) recipePage.classList.add('hidden');
+    if(bakeryPage) bakeryPage.classList.remove('hidden');
+    
+    window.scrollTo(0,0);
+}
+
+// 3. Logic to return to the Hub from the Bakery Page
+// Note: This replaces your previous returnToTerminal to handle the Bakery Page too
+function returnToTerminal() {
+    const bakeryPage = document.getElementById('bakery-page');
+    const recipePage = document.getElementById('recipe-page');
+    const terminal = document.getElementById('terminal');
+
+    if(bakeryPage) bakeryPage.classList.add('hidden');
+    if(recipePage) recipePage.classList.add('hidden');
+    if(terminal) terminal.classList.remove('hidden');
+    
+    initAtlas();
+    window.scrollTo(0,0);
+}
+
+// Ensure the Hub stays hidden on first load so the Intro Page shows
+window.addEventListener('DOMContentLoaded', () => {
+    const terminal = document.getElementById('terminal');
+    const nav = document.getElementById('main-nav');
+    if(terminal) terminal.classList.add('hidden');
+    if(nav) nav.classList.add('hidden');
+});
