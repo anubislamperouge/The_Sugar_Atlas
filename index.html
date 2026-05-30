@@ -3,30 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sugar Atlas</title>
+    <title>The Sugar Atlas | Global Transit</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="particles-js"></div>
 
     <nav>
-        <div class="logo font-mileast">THE SUGAR ATLAS</div>
-        <div class="passport-stats">STAMPS: <span id="stamp-count">0</span>/30</div>
+        <div class="nav-left">
+            <div class="logo font-mileast">THE SUGAR ATLAS</div>
+            <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
+        </div>
+        <div class="nav-right">
+            <div class="passport-stats">
+                <span class="stat-label">STAMPS</span>
+                <span id="stamp-count">0</span><span class="total">/30</span>
+                <div class="progress-bar-mini"><div id="progress-fill"></div></div>
+            </div>
+        </div>
     </nav>
 
     <main id="terminal">
-        <section class="hero">
+        <section class="hero hero-centered">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
-            <div class="description-section">
-                <p>Welcome to a curated global transit of taste. Explore 30 iconic desserts from across the map, collect your digital passport stamps, and master the art of international baking.</p>
-                <button id="roulette-btn" class="back-btn" style="background: #c5a059; color: black; margin-top: 20px;">✈️ SUGAR ROULETTE</button>
-            </div>
+            <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
+            <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
 
         <div class="destination-grid" id="dest-grid"></div>
     </main>
 
     <div id="transit-overlay" class="hidden">
-        <div class="plane" style="font-size: 4rem; margin-bottom: 20px;">✈️</div>
+        <div class="flight-path">
+            <div class="plane" style="font-size: 4rem;">✈️</div>
+        </div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
     </div>
 
@@ -36,9 +46,8 @@
     </div>
 
     <section id="recipe-page" class="hidden">
-        <button onclick="returnToTerminal()" class="back-btn" style="position: absolute; top: 120px; left: 5%;">← CLOSE DOSSIER</button>
-        
-        <div class="recipe-container">
+        <div class="recipe-wrapper">
+            <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
             <div id="recipe-content"></div>
         </div>
     </section>
