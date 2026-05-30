@@ -1,57 +1,108 @@
 :root {
     --midnight: #050a14;
-    --deep-blue: #0f172a;
+    --deep-blue: #0a192f;
     --gold: #c5a059;
     --beige: #e5e1d8;
 }
 
 body {
-    background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-blue) 100%);
+    margin: 0;
     color: var(--beige);
     font-family: 'Helvetica Neue', sans-serif;
-    margin: 0;
     text-align: center;
+    min-height: 100vh;
+    /* MOVING GRADIENT BG */
+    background: linear-gradient(-45deg, #050a14, #0a192f, #112240, #020c1b);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
 
-/* THE FIX: Force hide anything with this class */
-.hidden {
-    display: none !important;
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hidden { display: none !important; }
+
+/* NAV LAYOUT: LEFT & RIGHT */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 5%;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
 .font-mileast {
-    font-family: serif; 
-    letter-spacing: 4px;
+    font-family: serif;
+    letter-spacing: 5px;
     text-transform: uppercase;
 }
 
-#transit-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--midnight);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999; /* Sits on top of everything */
+.description-section {
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(229, 225, 216, 0.7);
+    font-style: italic;
 }
 
 .destination-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    padding: 50px 10%;
+    gap: 30px;
+    padding: 0 10% 100px 10%;
 }
 
 .country-card {
-    border: 1px solid rgba(229, 225, 216, 0.2);
-    padding: 40px 20px;
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    padding: 50px 20px;
     cursor: pointer;
+    transition: 0.5s;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.country-card:hover {
+    border-color: var(--gold);
+    background: rgba(197, 160, 89, 0.05);
+    transform: translateY(-5px);
+}
+
+/* RECIPE PAGE CENTERED */
+.recipe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 10%;
 }
 
 .dessert-pic {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
+    height: 400px;
+    object-fit: cover;
     border: 1px solid var(--gold);
-    margin: 20px 0;
+    margin: 30px 0;
+}
+
+#transit-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--midnight);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.back-btn {
+    background: none;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 10px 25px;
+    cursor: pointer;
+    letter-spacing: 2px;
 }
