@@ -1,1 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Passport | Global Baking Tour</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <nav>
+            <div class="logo">✈️ Sweet Passport</div>
+            <ul>
+                <li><a href="#">Departure Lounge</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#">My Passport</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Travel the World One Dessert at a Time</h1>
+            <p>Your boarding pass to the world's most sugary secrets.</p>
+            <button id="roulette-btn" class="ticket-btn">Roll Sweet Roulette</button>
+        </section>
+
+        <section id="destinations" class="destination-grid">
+            <div class="destination-card" data-country="France">
+                <img src="images/croissant.jpg" alt="A golden flaky croissant" class="dessert-img">
+                <div class="card-content">
+                    <h3>Croissant 🇫🇷</h3>
+                    <p class="trait">Elegant • Flaky</p>
+                    <button class="stamp-btn">Visit & Get Stamp</button>
+                </div>
+            </div>
+
+            <div class="destination-card" data-country="Turkey">
+                <img src="images/baklava.jpg" alt="Sweet honey baklava" class="dessert-img">
+                <div class="card-content">
+                    <h3>Baklava 🇹🇷</h3>
+                    <p class="trait">Sweet • Dramatic</p>
+                    <button class="stamp-btn">Visit & Get Stamp</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="passport-section">
+            <h2>Your Travel Progress</h2>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <p id="stats">Stamps Collected: 0 / 2</p>
+            <div id="stamp-display"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Sweet Passport Adventure. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
