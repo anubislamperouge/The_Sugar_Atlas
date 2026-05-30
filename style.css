@@ -99,19 +99,37 @@ nav {
     backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 100;
 }
-
+/* UPDATED NAV BUTTONS TO FILL SPACE */
 .nav-map-btn {
     background: none;
     border: 1px solid var(--gold);
     color: var(--gold);
-    padding: 8px 15px;
-    margin-right: 10px;
+    padding: 10px 25px; /* Increased padding to make them wider */
+    margin-right: 15px; 
     cursor: pointer;
-    font-size: 0.7rem;
-    height: 35px;
+    font-size: 0.9rem; /* Slightly larger text */
+    font-family: inherit;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Adds that "premium" wide look */
+    transition: all 0.3s ease;
+    height: 45px; /* Taller buttons */
     display: flex;
     align-items: center;
-    transition: 0.3s;
+    justify-content: center;
+    min-width: 140px; /* Ensures they don't look too small on wide screens */
+}
+
+.nav-map-btn:hover {
+    background: rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Adjusting the Nav Right container to spread things out a bit */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between buttons and stamps */
 }
 
 .nav-map-btn:hover { background: var(--gold); color: black; }
