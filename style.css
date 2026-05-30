@@ -14,7 +14,7 @@ body {
     background: linear-gradient(-45deg, #020617, #1e293b, #0f172a, #4338ca);
     background-size: 400% 400%;
     animation: gradientMove 10s ease infinite;
-    text-align: center; /* Ensures text centering */
+    text-align: center;
 }
 
 @keyframes gradientMove {
@@ -29,15 +29,60 @@ body {
     text-transform: uppercase;
 }
 
-/* CENTERED HERO */
+/* --- HERO SECTION WITH MAP & PARTICLES --- */
 .hero-centered {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
+    overflow: hidden;
+    z-index: 1;
 }
 
+/* Luxury World Map Outline */
+.hero-centered::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    /* Note: Ensure you have a world map image in your /images folder */
+    background: url('images/world-map-gold.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.07; /* Subtle luxury 5-8% opacity */
+    z-index: -1;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
+}
+
+/* Gold Decorative Divider below Subtitle */
+.subtitle::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 25px auto 0;
+    box-shadow: 0 0 8px var(--gold);
+}
+
+/* Glowing Destination Nodes */
+.node {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--gold);
+    animation: pulseNode 3s infinite ease-in-out;
+}
+
+@keyframes pulseNode {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(2.5); opacity: 1; box-shadow: 0 0 15px var(--bright-gold); }
+}
+
+/* --- UI ELEMENTS --- */
 nav {
     display: flex;
     justify-content: space-between;
@@ -45,6 +90,13 @@ nav {
     background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 100;
+}
+
+/* Making Rank Text Gold */
+#explorer-rank {
+    color: var(--gold);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
 }
 
 .destination-grid {
@@ -68,7 +120,7 @@ nav {
     box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
 }
 
-/* DOSSIER (RECIPE) CENTERING */
+/* --- RECIPE DOSSIER --- */
 .recipe-wrapper {
     display: flex;
     flex-direction: column;
@@ -78,7 +130,7 @@ nav {
 
 .dossier-img-centered {
     width: 100%;
-    max-width: 800px; /* BIG PICTURE */
+    max-width: 800px;
     height: 500px;
     object-fit: cover;
     border: 1px solid var(--gold);
@@ -89,6 +141,7 @@ nav {
     position: absolute; top: 120px; left: 5%;
     background: none; border: 1px solid var(--gold);
     color: var(--gold); padding: 10px 20px; cursor: pointer;
+    z-index: 10;
 }
 
 #transit-overlay, #roulette-loader {
@@ -113,6 +166,12 @@ nav {
     background: var(--gold); color: black;
     padding: 15px 40px; border: none;
     font-weight: bold; cursor: pointer; margin-top: 20px;
+    transition: 0.3s;
+}
+
+.gold-btn:hover {
+    background: var(--bright-gold);
+    transform: scale(1.05);
 }
 
 .hidden { display: none !important; }
