@@ -16,24 +16,33 @@
         <div class="intro-content">
             <h1 class="font-mileast fade-in">Welcome to The Sugar Atlas</h1>
             <p class="subtitle fade-in-delay">A journey through the world’s sweetest desserts</p>
-            <div style="width: 50px; height: 1px; background: #d4af37; margin: 20px auto;"></div>
-            <p class="intro-desc fade-in-delay-2">Travel across countries, unlock desserts, and collect passport stamps.</p>
+            <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
+            <p class="intro-desc fade-in-delay-2">Travel across countries, unlock desserts, and collect passport stamps as you explore global pastry culture.</p>
             <div class="intro-btns fade-in-delay-3">
                 <button onclick="enterHub()" class="gold-btn">START JOURNEY</button>
+                <button onclick="enterHub()" class="skip-link" style="background:none; border:none; color:var(--gold); cursor:pointer; text-decoration:underline; margin-left:15px;">SKIP</button>
             </div>
         </div>
     </section>
 
-    <nav id="main-nav" class="hidden"> 
+    <div id="particles-js"></div>
+
+    <nav id="main-nav" class="hidden" style="padding: 1.5rem 8%;"> 
         <div class="nav-left">
-            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer;">THE SUGAR ATLAS</div>
-            <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
+            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer; font-size: 1.8rem; letter-spacing: 8px;">THE SUGAR ATLAS</div>
+            <div class="rank-tag" style="margin-top: 5px; letter-spacing: 2px;">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
         </div>
-        <div class="nav-right">
+        
+        <div class="nav-right" style="display: flex; align-items: center;">
             <button onclick="showAbout()" class="nav-map-btn">ℹ️ ABOUT</button>
             <button onclick="showBakeryMap()" class="nav-map-btn">📍 NEAR ME</button>
-            <div class="passport-stats">
-                <span id="stamp-count">0</span><span style="opacity:0.5">/30 STAMPS</span>
+            
+            <div class="passport-stats" style="margin-left: 20px; text-align: right;">
+                <span class="stat-label" style="display: block; font-size: 0.7rem; letter-spacing: 2px;">STAMPS</span>
+                <div style="display: flex; align-items: baseline; gap: 5px; justify-content: flex-end;">
+                    <span id="stamp-count" style="font-size: 1.4rem; color: var(--gold);">0</span>
+                    <span class="total" style="opacity: 0.5;">/ 30</span>
+                </div>
                 <div class="progress-bar-mini"><div id="progress-fill"></div></div>
             </div>
         </div>
@@ -42,39 +51,70 @@
     <main id="terminal" class="hidden">
         <section class="hero hero-centered">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
+            <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
             <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
         <div class="destination-grid" id="dest-grid"></div>
     </main>
 
-    <section id="bakery-page" class="hidden">
-        <div class="bakery-header hero-centered">
-            <h1 class="font-mileast">UAE SELECTION</h1>
-            <button onclick="returnToTerminal()" class="gold-btn">RETURN TO ATLAS</button>
-        </div>
-        <div class="bakery-grid">
-            <div class="bakery-card"><h3>Home Bakery</h3><p>📍 Nationwide</p></div>
-        </div>
-    </section>
-
     <section id="about-page" class="hidden">
         <div class="recipe-wrapper">
-            <h1 class="font-mileast">ABOUT THE ATLAS</h1>
-            <p>Your guide to the world's finest confections.</p>
-            <button onclick="returnToTerminal()" class="gold-btn">BACK</button>
+            <h1 class="font-mileast" style="font-size: 3rem;">ABOUT THE ATLAS</h1>
+            <div style="max-width: 700px; margin: 40px auto; line-height: 1.8; text-align: left; background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid var(--gold);">
+                <p>The Sugar Atlas is a premium digital experience designed for culinary explorers and dessert enthusiasts.</p>
+                <p>Our mission is to bridge the gap between global pastry culture and local discovery. Whether you are uncovering the secrets of a French Macaron or finding the best cheesecake in Dubai, the Atlas is your guide to the world's finest confections.</p>
+            </div>
+            <button onclick="returnToTerminal()" class="gold-btn">BACK TO TERMINAL</button>
         </div>
     </section>
 
-    <section id="recipe-page" class="hidden">
-        <div class="recipe-wrapper">
-            <div id="recipe-content"></div>
-            <button onclick="returnToTerminal()" class="gold-btn">BACK TO ATLAS</button>
+    <section id="bakery-page" class="hidden">
+        <div class="bakery-header hero-centered">
+            <h1 class="font-mileast">SUGAR ATLAS: NEAR YOU</h1>
+            <p class="subtitle">Real-world pastry destinations in the UAE</p>
+            <button onclick="returnToTerminal()" class="gold-btn mini" style="margin-bottom:40px;">RETURN TO ATLAS</button>
+        </div>
+        <div class="bakery-grid">
+            <div class="bakery-card">
+                <div class="location-pin">📍 DUBAI</div>
+                <h3>L’ETO Café</h3>
+                <p class="bakery-vibe">Luxury dessert café with a floral atmosphere.</p>
+                <p><strong>SIGNATURE:</strong> Lotus Cheesecake</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="bakery-card">
+                <div class="location-pin">📍 ABU DHABI</div>
+                <h3>Switch</h3>
+                <p class="bakery-vibe">Modern, futuristic dining experience.</p>
+                <p><strong>SIGNATURE:</strong> Camel Milk Chocolate</p>
+                <div class="rating">⭐⭐⭐⭐</div>
+            </div>
+            <div class="bakery-card">
+                <div class="location-pin">📍 DUBAI</div>
+                <h3>Home Bakery</h3>
+                <p class="bakery-vibe">Cozy, rustic vibes and homemade goodness.</p>
+                <p><strong>SIGNATURE:</strong> Chewy Melt Cookies</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
         </div>
     </section>
 
     <div id="transit-overlay" class="hidden">
+        <div class="flight-path"><div class="plane" style="font-size: 4rem;">✈️</div></div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
     </div>
+
+    <div id="roulette-loader" class="hidden">
+        <div class="loader-circle"></div>
+        <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
+    </div>
+
+    <section id="recipe-page" class="hidden">
+        <div class="recipe-wrapper">
+            <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
+            <div id="recipe-content"></div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
