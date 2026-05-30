@@ -199,3 +199,17 @@ nav {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* ADD THIS TO THE BOTTOM OF YOUR CSS */
+.hidden {
+    display: none !important;
+}
+
+.intro-screen {
+    opacity: 1;
+    transition: opacity 0.8s ease;
+}
+
+/* Ensure Nav and Terminal don't show until JS says so */
+#main-nav.hidden, #terminal.hidden, #about-page.hidden, #bakery-page.hidden, #recipe-page.hidden {
+    display: none !important;
+}
