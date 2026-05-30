@@ -30,19 +30,15 @@ const atlasData = [
     { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "chebakia.jpg", desc: "Honey sesame pastry", recipe: ["Shape dough", "Fry", "Coat in honey + sesame"] },
     { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "morocco 1.jpg", desc: "Soft cake with cream sauce", recipe: ["Bake sponge cake", "Pour warm cream sauce"] }
 ];
-const grid = document.getElementById('dest-grid');
-let stamps = new Set();
-
 function initAtlas() {
+    if (!grid) return;
     grid.innerHTML = '';
     atlasData.forEach(item => {
         const isCollected = stamps.has(item.country);
         const card = document.createElement('div');
         card.className = `country-card ${isCollected ? 'stamped' : ''}`;
         card.innerHTML = `
-            <img src="${item.pic}" class="card-bg-img" style="width:100%; height:100%; object-fit:cover; opacity:0.4; position:absolute; top:0; left:0; z-index:-1;">
             <div class="card-info" style="padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%;">
-                <span class="rank-tag">${item.difficulty} • ${item.time}</span>
                 <h2 class="font-mileast">${item.country}</h2>
                 <p>${item.dessert}</p>
                 ${isCollected ? '<span class="stamp-badge" style="color:var(--gold);">[PASSPORT STAMPED]</span>' : ''}
@@ -64,43 +60,29 @@ function enterHub() {
             loader.classList.add('hidden');
             document.getElementById('main-nav').classList.remove('hidden');
             document.getElementById('terminal').classList.remove('hidden');
+            createHeroEffects(); // Triggers your gold dots
             initAtlas();
         }, 2000);
     }, 800);
 }
 
-function showAbout() {
-    document.getElementById('terminal').classList.add('hidden');
-    document.getElementById('bakery-page').classList.add('hidden');
-    document.getElementById('recipe-page').classList.add('hidden');
-    document.getElementById('about-page').classList.remove('hidden');
-}
-
 function showBakeryMap() {
-    document.getElementById('terminal').classList.add('hidden');
-    document.getElementById('recipe-page').classList.add('hidden');
-    document.getElementById('about-page').classList.add('hidden');
+    hideAll();
     document.getElementById('bakery-page').classList.remove('hidden');
     window.scrollTo(0,0);
 }
 
 function returnToTerminal() {
-    document.getElementById('bakery-page').classList.add('hidden');
-    document.getElementById('recipe-page').classList.add('hidden');
-    document.getElementById('about-page').classList.add('hidden');
+    hideAll();
     document.getElementById('terminal').classList.remove('hidden');
     initAtlas();
-    window.scrollTo(0,0);
+    createHeroEffects();
 }
 
-function updatePassport() {
-    const count = stamps.size;
-    document.getElementById('stamp-count').innerText = count;
-    document.getElementById('progress-fill').style.width = `${(count / 30) * 100}%`;
-    const rankLabel = document.getElementById('explorer-rank');
-    if (count > 20) rankLabel.innerText = "GRAND AMBASSADOR";
-    else if (count > 10) rankLabel.innerText = "WORLD VOYAGER";
-    else if (count > 0) rankLabel.innerText = "SWEET EXPLORER";
+function hideAll() {
+    ['terminal', 'bakery-page', 'recipe-page', 'about-page'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
 }
 
 function startTransit(item) {
@@ -114,31 +96,13 @@ function startTransit(item) {
 }
 
 function showDossier(item) {
-    document.getElementById('terminal').classList.add('hidden');
+    hideAll();
     const page = document.getElementById('recipe-page');
     page.classList.remove('hidden');
-    const recipeHTML = item.recipe.map(step => `<li>${step}</li>`).join('');
-    document.getElementById('recipe-content').innerHTML = `
-        <h1 class="font-mileast" style="font-size: 4rem; margin-top: 20px;">${item.dessert}</h1>
-        <p style="letter-spacing: 4px; color: #d4af37; font-style: italic; font-size: 1.2rem;">"${item.desc}"</p>
-        <img src="${item.pic}" class="dossier-img-centered">
-        <div style="max-width: 700px; margin: 0 auto 40px auto; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border: 1px solid rgba(212, 175, 55, 0.3);">
-            <h3 class="font-mileast" style="color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 10px;">RECIPE DOSSIER</h3>
-            <p><strong>ORIGIN:</strong> ${item.country}</p>
-            <p><strong>DIFFICULTY:</strong> ${item.difficulty} | <strong>TIME:</strong> ${item.time}</p>
-            <h4 style="margin-top: 20px; color: var(--gold);">PREPARATION:</h4>
-            <ul style="line-height: 2; padding-left: 20px;">${recipeHTML}</ul>
-        </div>
-        <button onclick="claimStamp('${item.country}')" class="gold-btn" style="padding: 20px 60px;">STAMP PASSPORT</button>
-    `;
+    document.getElementById('recipe-content').innerHTML = `<h1>${item.dessert}</h1><p>${item.desc}</p>`;
 }
 
-function claimStamp(country) {
-    stamps.add(country);
-    updatePassport();
-    returnToTerminal();
-}
-
+// THE ROULETTE FIX
 document.getElementById('roulette-btn').onclick = () => {
     const loader = document.getElementById('roulette-loader');
     loader.classList.remove('hidden');
@@ -152,21 +116,13 @@ document.getElementById('roulette-btn').onclick = () => {
 function createHeroEffects() {
     const hero = document.querySelector('.hero-centered');
     if(!hero) return;
-
-    // This line clears old dots so they don't stack up and lag your site!
     hero.querySelectorAll('.node').forEach(n => n.remove()); 
-
-    for (let i = 0; i < 15; i++) { // Increased to 15 for extra glow
+    for (let i = 0; i < 15; i++) {
         let node = document.createElement('div');
         node.className = 'node';
         node.style.top = Math.random() * 100 + "%";
         node.style.left = Math.random() * 100 + "%";
-        const size = Math.random() * 4 + 2; 
-        node.style.width = size + 'px';
-        node.style.height = size + 'px';
         node.style.animationDelay = Math.random() * 5 + "s";
         hero.appendChild(node);
     }
 }
-
-createHeroEffects();
