@@ -185,3 +185,11 @@ nav {
 }
 
 .hidden { display: none !important; }
+#recipe-content ul {
+    list-style-type: square;
+    color: var(--beige);
+}
+
+#recipe-content h3 {
+    margin-top: 0;
+}
