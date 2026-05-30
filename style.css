@@ -71,13 +71,18 @@ body {
 
 .node {
     position: absolute;
-    width: 5px; height: 5px;
+    width: 6px;
+    height: 6px;
     background: var(--gold);
     border-radius: 50%;
-    box-shadow: 0 0 15px var(--gold);
-    z-index: -1;  
-    animation: pulseNode 3s infinite ease-in-out, floatNode 10s infinite linear;
-    opacity: 0.6;
+    box-shadow: 0 0 15px var(--gold), 0 0 30px var(--bright-gold);
+    z-index: 0;
+    animation: pulseNode 3s infinite ease-in-out;
+}
+
+@keyframes pulseNode {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
 }
 
 @keyframes floatNode {
