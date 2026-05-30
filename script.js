@@ -10,41 +10,16 @@ const atlasData = [
 const grid = document.getElementById('dest-grid');
 let stamps = new Set();
 
-// INITIALIZE ATLAS
-function initAtlas() {
-    grid.innerHTML = '';
-    atlasData.forEach(item => {
-        const isCollected = stamps.has(item.country);
-        const card = document.createElement('div');
-        card.className = `country-card ${isCollected ? 'stamped' : ''}`;
-        card.innerHTML = `
-            <img src="${item.pic}" class="card-bg-img">
-            <div class="card-info">
-                <span class="rank-tag">${item.difficulty} • ${item.time}</span>
-                <h2 class="font-mileast">${item.country}</h2>
-                <p>${item.dessert}</p>
-                ${isCollected ? '<span class="stamp-badge">PASSPORT STAMPED</span>' : ''}
-            </div>
-        `;
-        card.onclick = () => startTransit(item);
-        grid.appendChild(card);
-    });
-}
+// 1. Load the Terminal Grid
+atlasData.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'country-card';
+    card.innerHTML = `<h3 class="font-mileast">${item.country}</h3><p>READY FOR BOARDING</p>`;
+    card.onclick = () => startTransit(item);
+    grid.appendChild(card);
+});
 
-// PROGRESS SYSTEM
-function updatePassport() {
-    const count = stamps.size;
-    document.getElementById('stamp-count').innerText = count;
-    document.getElementById('progress-fill').style.width = `${(count / 30) * 100}%`;
-    
-    // Achievement Ranks
-    const rankLabel = document.getElementById('explorer-rank');
-    if (count > 20) rankLabel.innerText = "GRAND AMBASSADOR";
-    else if (count > 10) rankLabel.innerText = "WORLD VOYAGER";
-    else if (count > 0) rankLabel.innerText = "SWEET EXPLORER";
-}
-
-// TRANSIT & REWARD
+// 2. Standard Transit (Clicking a card)
 function startTransit(item) {
     const overlay = document.getElementById('transit-overlay');
     document.getElementById('target-country').innerText = item.country;
@@ -52,45 +27,49 @@ function startTransit(item) {
 
     setTimeout(() => {
         overlay.classList.add('hidden');
-        showDossier(item);
+        showRecipe(item);
     }, 2500);
 }
 
-function showDossier(item) {
+// 3. Roulette Loading (The special "Scanning" screen)
+document.getElementById('roulette-btn').onclick = () => {
+    const loader = document.getElementById('roulette-loader');
+    loader.classList.remove('hidden');
+
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        const randomItem = atlasData[Math.floor(Math.random() * atlasData.length)];
+        startTransit(randomItem); // Then show the "Departing" screen
+    }, 2000);
+};
+
+// 4. Centered Recipe Page
+function showRecipe(item) {
     document.getElementById('terminal').classList.add('hidden');
     const page = document.getElementById('recipe-page');
     page.classList.remove('hidden');
-    
+
     document.getElementById('recipe-content').innerHTML = `
-        <h1 class="font-mileast" style="font-size: 4rem;">${item.dessert}</h1>
-        <div class="dossier-grid">
-            <img src="${item.pic}" class="dossier-img">
-            <div class="dossier-text">
-                <h3>VITAL STATISTICS</h3>
-                <p>ORIGIN: ${item.country}</p>
-                <p>DIFFICULTY: ${item.difficulty}</p>
-                <button onclick="claimStamp('${item.country}')" class="gold-btn">STAMP PASSPORT</button>
-            </div>
+        <h1 class="font-mileast" style="font-size: 3rem;">${item.dessert}</h1>
+        <p style="letter-spacing: 4px; color: #d4af37;">PROVENANCE: ${item.country}</p>
+        <img src="${item.pic}" class="big-dessert-img">
+        <div style="max-width: 700px; line-height: 1.8;">
+            <h2 class="font-mileast">The Method</h2>
+            <p>${item.recipe}</p>
         </div>
+        <button onclick="collectStamp('${item.country}')" class="stamp-btn">STAMP PASSPORT</button>
     `;
 }
 
-function claimStamp(country) {
+function collectStamp(country) {
     stamps.add(country);
-    updatePassport();
+    document.getElementById('stamp-count').innerText = stamps.size;
+    document.getElementById('progress-fill').style.width = (stamps.size / 30 * 100) + "%";
     returnToTerminal();
 }
 
 function returnToTerminal() {
     document.getElementById('recipe-page').classList.add('hidden');
     document.getElementById('terminal').classList.remove('hidden');
-    initAtlas();
+    window.scrollTo(0,0);
 }
-
-// ROULETTE FEATURE
-document.getElementById('roulette-btn').onclick = () => {
-    const random = atlasData[Math.floor(Math.random() * atlasData.length)];
-    startTransit(random);
-};
-
-initAtlas();
