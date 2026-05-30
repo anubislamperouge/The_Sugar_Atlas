@@ -1,1 +1,120 @@
+/* Color Scheme: Cream, Beige, Warm Brown, Soft Pink */
+:root {
+    --cream: #FFF8F0;
+    --beige: #F4E4BA;
+    --brown: #6D4C41;
+    --pink: #F8BBD0;
+}
 
+body {
+    background-color: var(--cream);
+    color: var(--brown);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Header & Nav */
+header {
+    background-color: var(--pink);
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--brown);
+    font-weight: bold;
+    padding: 0 15px;
+    transition: color 0.3s; /* Hover effect requirement */
+}
+
+nav ul li a:hover {
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(rgba(255,248,240,0.8), rgba(255,248,240,0.8)), url('images/map-bg.jpg');
+    background-size: cover;
+}
+
+/* Flexbox Grid [cite: 47] */
+.destination-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.destination-card {
+    background: white;
+    border-radius: 20px;
+    width: 300px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px); /* Hover effect [cite: 49] */
+}
+
+.dessert-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.ticket-btn {
+    background-color: var(--brown);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Progress Section */
+.progress-container {
+    width: 80%;
+    background-color: #ddd;
+    margin: 20px auto;
+    border-radius: 20px;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 20px;
+    background-color: var(--pink);
+    border-radius: 20px;
+    transition: width 0.5s;
+}
+
+/* Responsive Design [cite: 48] */
+@media (max-width: 600px) {
+    .destination-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+}
