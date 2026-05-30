@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="hub-loader" class="hidden">
+        <div class="loader-circle"></div>
+        <h2 class="font-mileast">PREPARING YOUR PASSPORT...</h2>
+    </div>
+
     <section id="intro-page" class="intro-screen">
         <div class="intro-content">
             <h1 class="font-mileast fade-in">Welcome to The Sugar Atlas</h1>
@@ -27,8 +32,9 @@
             <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer">THE SUGAR ATLAS</div>
             <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
         </div>
-        <div class="nav-right">
-            <button onclick="showBakeryMap()" class="nav-map-btn" style="background:none; border:1px solid var(--gold); color:var(--gold); padding:8px 15px; margin-right:20px; cursor:pointer;">📍 NEAR ME</button>
+        <div class="nav-right" style="display: flex; align-items: center;">
+            <button onclick="showAbout()" class="nav-map-btn">ℹ️ ABOUT</button>
+            <button onclick="showBakeryMap()" class="nav-map-btn">📍 NEAR ME</button>
             
             <div class="passport-stats">
                 <span class="stat-label">STAMPS</span>
@@ -44,9 +50,19 @@
             <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
             <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
-
         <div class="destination-grid" id="dest-grid"></div>
     </main>
+
+    <section id="about-page" class="hidden">
+        <div class="recipe-wrapper">
+            <h1 class="font-mileast" style="font-size: 3rem;">ABOUT THE ATLAS</h1>
+            <div style="max-width: 700px; margin: 40px auto; line-height: 1.8; text-align: left; background: rgba(255,255,255,0.05); padding: 40px; border: 1px solid var(--gold);">
+                <p>The Sugar Atlas is a premium digital experience designed for culinary explorers and dessert enthusiasts.</p>
+                <p>Our mission is to bridge the gap between global pastry culture and local discovery. Whether you are uncovering the secrets of a French Macaron or finding the best cheesecake in Dubai, the Atlas is your guide to the world's finest confections.</p>
+            </div>
+            <button onclick="returnToTerminal()" class="gold-btn">BACK TO TERMINAL</button>
+        </div>
+    </section>
 
     <section id="bakery-page" class="hidden">
         <div class="bakery-header hero-centered">
@@ -54,7 +70,6 @@
             <p class="subtitle">Real-world pastry destinations in the UAE</p>
             <button onclick="returnToTerminal()" class="gold-btn mini" style="margin-bottom:40px;">RETURN TO ATLAS</button>
         </div>
-
         <div class="bakery-grid">
             <div class="bakery-card">
                 <div class="location-pin">📍 DUBAI</div>
@@ -81,9 +96,7 @@
     </section>
 
     <div id="transit-overlay" class="hidden">
-        <div class="flight-path">
-            <div class="plane" style="font-size: 4rem;">✈️</div>
-        </div>
+        <div class="flight-path"><div class="plane" style="font-size: 4rem;">✈️</div></div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
     </div>
 
