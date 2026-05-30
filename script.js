@@ -1,34 +1,34 @@
 const atlasData = [
-    { country: "France", dessert: "Macaron", time: "2.5–3 hrs", difficulty: "Expert", pic: "images/france.jpg" },
-    { country: "Italy", dessert: "Tiramisu", time: "1 hr", difficulty: "Medium", pic: "images/italy.jpg" },
-    { country: "Japan", dessert: "Mochi", time: "1–1.5 hrs", difficulty: "Medium", pic: "images/japan.jpg" },
-    { country: "Turkey", dessert: "Baklava", time: "3 hrs", difficulty: "Expert", pic: "images/turkey.jpg" },
-    { country: "Mexico", dessert: "Churros", time: "45 mins", difficulty: "Easy", pic: "images/mexico.jpg" },
-    { country: "Brazil", dessert: "Brigadeiro", time: "30 mins", difficulty: "Easy", pic: "images/brazil.jpg" },
-    { country: "United States", dessert: "Apple Pie", time: "2 hrs", difficulty: "Medium", pic: "images/usa.jpg" },
-    { country: "Philippines", dessert: "Leche Flan", time: "1 hr", difficulty: "Easy", pic: "images/philippines.jpg" },
-    { country: "Spain", dessert: "Basque Cheesecake", time: "1.5 hrs", difficulty: "Medium", pic: "images/spain.jpg" },
-    { country: "United Kingdom", dessert: "Sticky Toffee Pudding", time: "1.5 hrs", difficulty: "Medium", pic: "images/uk.jpg" },
-    { country: "Germany", dessert: "Black Forest Cake", time: "3 hrs", difficulty: "Expert", pic: "images/germany.jpg" },
-    { country: "Austria", dessert: "Sachertorte", time: "3 hrs", difficulty: "Expert", pic: "images/austria.jpg" },
-    { country: "Belgium", dessert: "Belgian Waffle", time: "40 mins", difficulty: "Easy", pic: "images/belgium.jpg" },
-    { country: "Greece", dessert: "Galaktoboureko", time: "2.5 hrs", difficulty: "Expert", pic: "images/greece.jpg" },
-    { country: "Portugal", dessert: "Pastel de Nata", time: "2 hrs", difficulty: "Medium", pic: "images/portugal.jpg" },
-    { country: "India", dessert: "Gulab Jamun", time: "1.5 hrs", difficulty: "Medium", pic: "images/india.jpg" },
-    { country: "China", dessert: "Tangyuan", time: "1 hr", difficulty: "Medium", pic: "images/china.jpg" },
-    { country: "South Korea", dessert: "Hotteok", time: "45 mins", difficulty: "Easy", pic: "images/korea.jpg" },
-    { country: "Thailand", dessert: "Mango Sticky Rice", time: "1 hr", difficulty: "Easy", pic: "images/thailand.jpg" },
-    { country: "Vietnam", dessert: "Che Ba Mau", time: "45 mins", difficulty: "Easy", pic: "images/vietnam.jpg" },
-    { country: "Indonesia", dessert: "Klepon", time: "1 hr", difficulty: "Medium", pic: "images/indonesia.jpg" },
-    { country: "Malaysia", dessert: "Kuih Seri Muka", time: "2.5 hrs", difficulty: "Expert", pic: "images/malaysia.jpg" },
-    { country: "Singapore", dessert: "Ondeh-Ondeh", time: "1 hr", difficulty: "Medium", pic: "images/singapore.jpg" },
-    { country: "Australia", dessert: "Pavlova", time: "2 hrs", difficulty: "Medium", pic: "images/australia.jpg" },
-    { country: "New Zealand", dessert: "Lamington", time: "1.5 hrs", difficulty: "Medium", pic: "images/nz.jpg" },
-    { country: "Canada", dessert: "Butter Tart", time: "1 hr", difficulty: "Easy", pic: "images/canada.jpg" },
-    { country: "Argentina", dessert: "Alfajor", time: "1.5 hrs", difficulty: "Medium", pic: "images/argentina.jpg" },
-    { country: "Peru", dessert: "Suspiro Limeño", time: "1 hr", difficulty: "Medium", pic: "images/peru.jpg" },
-    { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "images/morocco.jpg" },
-    { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "images/sa.jpg" }
+    { country: "France", dessert: "Macaron", time: "2.5–3 hrs", difficulty: "Expert", pic: "images/france.jpg", desc: "Delicate almond sandwich cookies", recipe: ["Whip egg whites + sugar", "Fold in almond flour", "Pipe small circles", "Bake 15 mins", "Fill with buttercream"] },
+    { country: "Italy", dessert: "Tiramisu", time: "1 hr", difficulty: "Medium", pic: "images/italy.jpg", desc: "Coffee-soaked layered dessert with cream", recipe: ["Dip biscuits in coffee", "Layer with mascarpone cream", "Repeat layers", "Chill 4 hours"] },
+    { country: "Japan", dessert: "Mochi", time: "1–1.5 hrs", difficulty: "Medium", pic: "images/japan.jpg", desc: "Chewy rice cake with sweet filling", recipe: ["Mix glutinous rice flour + water", "Microwave or steam", "Flatten dough", "Fill with red bean paste"] },
+    { country: "Turkey", dessert: "Baklava", time: "3 hrs", difficulty: "Expert", pic: "images/turkey.jpg", desc: "Flaky nut pastry with syrup", recipe: ["Layer phyllo sheets", "Add chopped nuts", "Bake until golden", "Pour honey syrup"] },
+    { country: "Mexico", dessert: "Churros", time: "45 mins", difficulty: "Easy", pic: "images/mexico.jpg", desc: "Crispy fried cinnamon sticks", recipe: ["Make dough", "Pipe into hot oil", "Fry until golden", "Roll in cinnamon sugar"] },
+    { country: "Brazil", dessert: "Brigadeiro", time: "30 mins", difficulty: "Easy", pic: "images/brazil.jpg", desc: "Chocolate truffle balls", recipe: ["Cook condensed milk + cocoa", "Stir until thick", "Cool", "Roll into balls"] },
+    { country: "United States", dessert: "Apple Pie", time: "2 hrs", difficulty: "Medium", pic: "images/usa.jpg", desc: "Warm spiced apple dessert", recipe: ["Cook apples + sugar + cinnamon", "Place in crust", "Cover and bake"] },
+    { country: "Philippines", dessert: "Leche Flan", time: "1 hr", difficulty: "Easy", pic: "images/philippines.jpg", desc: "Caramel custard dessert", recipe: ["Caramelize sugar", "Mix eggs + condensed milk", "Steam until set"] },
+    { country: "Spain", dessert: "Basque Cheesecake", time: "1.5 hrs", difficulty: "Medium", pic: "images/spain.jpg", desc: "Burnt-top creamy cheesecake", recipe: ["Mix cream cheese + sugar + eggs", "Pour into pan", "Bake at high heat"] },
+    { country: "United Kingdom", dessert: "Sticky Toffee Pudding", time: "1.5 hrs", difficulty: "Medium", pic: "images/uk.jpg", desc: "Soft cake with toffee sauce", recipe: ["Bake date cake", "Make toffee sauce", "Pour over cake"] },
+    { country: "Germany", dessert: "Black Forest Cake", time: "3 hrs", difficulty: "Expert", pic: "images/germany.jpg", desc: "Chocolate cake with cherries", recipe: ["Bake chocolate sponge", "Add whipped cream + cherries", "Layer cake"] },
+    { country: "Austria", dessert: "Sachertorte", time: "3 hrs", difficulty: "Expert", pic: "images/austria.jpg", desc: "Dense chocolate cake with jam", recipe: ["Bake chocolate cake", "Spread apricot jam", "Cover with chocolate glaze"] },
+    { country: "Belgium", dessert: "Belgian Waffle", time: "40 mins", difficulty: "Easy", pic: "images/belgium.jpg", desc: "Golden crispy waffles", recipe: ["Mix batter", "Cook in waffle iron", "Add toppings"] },
+    { country: "Greece", dessert: "Galaktoboureko", time: "2.5 hrs", difficulty: "Expert", pic: "images/greece.jpg", desc: "Custard in crispy phyllo", recipe: ["Make custard", "Wrap in phyllo", "Bake", "Add syrup"] },
+    { country: "Portugal", dessert: "Pastel de Nata", time: "2 hrs", difficulty: "Medium", pic: "images/portugal.jpg", desc: "Creamy custard tart", recipe: ["Fill pastry shells with custard", "Bake until browned"] },
+    { country: "India", dessert: "Gulab Jamun", time: "1.5 hrs", difficulty: "Medium", pic: "images/india.jpg", desc: "Sweet milk balls in syrup", recipe: ["Make dough", "Fry balls", "Soak in sugar syrup"] },
+    { country: "China", dessert: "Tangyuan", time: "1 hr", difficulty: "Medium", pic: "images/china.jpg", desc: "Sweet rice balls in soup", recipe: ["Make rice dough", "Fill with sesame paste", "Boil in sweet water"] },
+    { country: "South Korea", dessert: "Hotteok", time: "45 mins", difficulty: "Easy", pic: "images/korea.jpg", desc: "Sweet filled pancakes", recipe: ["Make dough", "Fill with brown sugar", "Pan-fry"] },
+    { country: "Thailand", dessert: "Mango Sticky Rice", time: "1 hr", difficulty: "Easy", pic: "images/thailand.jpg", desc: "Coconut rice with mango", recipe: ["Cook sticky rice", "Add coconut milk", "Serve with mango"] },
+    { country: "Vietnam", dessert: "Che Ba Mau", time: "45 mins", difficulty: "Easy", pic: "images/vietnam.jpg", desc: "Three-layer dessert drink", recipe: ["Layer beans + jelly", "Add coconut milk", "Serve cold"] },
+    { country: "Indonesia", dessert: "Klepon", time: "1 hr", difficulty: "Medium", pic: "images/indonesia.jpg", desc: "Sweet rice balls", recipe: ["Make rice dough", "Fill with palm sugar", "Boil", "Coat in coconut"] },
+    { country: "Malaysia", dessert: "Kuih Seri Muka", time: "2.5 hrs", difficulty: "Expert", pic: "images/malaysia.jpg", desc: "Layered pandan dessert", recipe: ["Steam sticky rice base", "Add pandan custard layer"] },
+    { country: "Singapore", dessert: "Ondeh-Ondeh", time: "1 hr", difficulty: "Medium", pic: "images/singapore.jpg", desc: "Coconut sugar balls", recipe: ["Make rice dough", "Fill with palm sugar", "Boil", "Roll in coconut"] },
+    { country: "Australia", dessert: "Pavlova", time: "2 hrs", difficulty: "Medium", pic: "images/australia.jpg", desc: "Crisp meringue dessert", recipe: ["Whip egg whites + sugar", "Bake meringue", "Top with cream + fruit"] },
+    { country: "New Zealand", dessert: "Lamington", time: "1.5 hrs", difficulty: "Medium", pic: "images/nz.jpg", desc: "Chocolate coconut sponge", recipe: ["Bake sponge cake", "Dip in chocolate", "Coat in coconut"] },
+    { country: "Canada", dessert: "Butter Tart", time: "1 hr", difficulty: "Easy", pic: "images/canada.jpg", desc: "Sweet syrup tart", recipe: ["Make pastry shell", "Fill with butter + sugar + egg", "Bake"] },
+    { country: "Argentina", dessert: "Alfajor", time: "1.5 hrs", difficulty: "Medium", pic: "images/argentina.jpg", desc: "Dulce de leche sandwich cookies", recipe: ["Bake cookies", "Fill with dulce de leche", "Sandwich"] },
+    { country: "Peru", dessert: "Suspiro Limeño", time: "1 hr", difficulty: "Medium", pic: "images/peru.jpg", desc: "Caramel cream dessert", recipe: ["Cook milk + sugar", "Add meringue topping"] },
+    { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "images/morocco.jpg", desc: "Honey sesame pastry", recipe: ["Shape dough", "Fry", "Coat in honey + sesame"] },
+    { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "images/sa.jpg", desc: "Soft cake with cream sauce", recipe: ["Bake sponge cake", "Pour warm cream sauce"] }
 ];
 
 const grid = document.getElementById('dest-grid');
@@ -75,21 +75,29 @@ function startTransit(item) {
         showDossier(item);
     }, 2500);
 }
-
 function showDossier(item) {
     document.getElementById('terminal').classList.add('hidden');
     const page = document.getElementById('recipe-page');
     page.classList.remove('hidden');
     
+    // Create the recipe list HTML
+    const recipeHTML = item.recipe.map(step => `<li>${step}</li>`).join('');
+
     document.getElementById('recipe-content').innerHTML = `
         <h1 class="font-mileast" style="font-size: 4rem; margin-top: 20px;">${item.dessert}</h1>
-        <p style="letter-spacing: 4px; color: #d4af37;">VITAL STATISTICS: ${item.country}</p>
+        <p style="letter-spacing: 4px; color: #d4af37; font-style: italic; font-size: 1.2rem;">"${item.desc}"</p>
         
         <img src="${item.pic}" class="dossier-img-centered">
         
-        <div style="max-width: 700px; margin: 0 auto 40px auto; line-height: 1.8;">
-            <p>DIFFICULTY: ${item.difficulty} | PREP TIME: ${item.time}</p>
-            <p>Explore the culinary secrets of ${item.country} with this authentic ${item.dessert} recipe.</p>
+        <div style="max-width: 700px; margin: 0 auto 40px auto; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border-radius: 10px; border: 1px solid rgba(212, 175, 55, 0.3);">
+            <h3 class="font-mileast" style="color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 10px;">RECIPE DOSSIER</h3>
+            <p><strong>ORIGIN:</strong> ${item.country}</p>
+            <p><strong>DIFFICULTY:</strong> ${item.difficulty} | <strong>TIME:</strong> ${item.time}</p>
+            
+            <h4 style="margin-top: 20px; color: var(--gold);">PREPARATION:</h4>
+            <ul style="line-height: 2; padding-left: 20px;">
+                ${recipeHTML}
+            </ul>
         </div>
 
         <button onclick="claimStamp('${item.country}')" class="gold-btn" style="padding: 20px 60px;">STAMP PASSPORT</button>
