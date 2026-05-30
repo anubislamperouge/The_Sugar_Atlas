@@ -30,183 +30,62 @@ const atlasData = [
     { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "images/morocco.jpg", desc: "Honey sesame pastry", recipe: ["Shape dough", "Fry", "Coat in honey + sesame"] },
     { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "images/sa.jpg", desc: "Soft cake with cream sauce", recipe: ["Bake sponge cake", "Pour warm cream sauce"] }
 ];
-
-let stamps = new Set();
-
-// --- THE NAVIGATION LOGIC (This is where the magic happens) ---
-
 function enterHub() {
     const intro = document.getElementById('intro-page');
     const loader = document.getElementById('hub-loader');
     const nav = document.getElementById('main-nav');
     const terminal = document.getElementById('terminal');
 
-    // 1. Fade out the intro screen
-    if (intro) {
-        intro.style.transition = "opacity 0.5s";
-        intro.style.opacity = '0';
-    }
+    if (intro) intro.style.opacity = '0';
 
     setTimeout(() => {
-        // 2. Hide intro, show the loading overlay
         if (intro) intro.classList.add('hidden');
         if (loader) loader.classList.remove('hidden');
 
-        // 3. Pause for the "Preparing Passport" effect
         setTimeout(() => {
             if (loader) loader.classList.add('hidden');
-            
-            // 4. Show the Hub!
             if (nav) nav.classList.remove('hidden');
             if (terminal) terminal.classList.remove('hidden');
-            
-            // 5. Build the destination grid
             initAtlas();
-            createHeroEffects();
-        }, 2000);
+        }, 1500);
     }, 500);
 }
-
-// --- APP FUNCTIONS ---
 
 function initAtlas() {
     const grid = document.getElementById('dest-grid');
     if (!grid) return;
     grid.innerHTML = '';
-    
     atlasData.forEach(item => {
-        const isCollected = stamps.has(item.country);
         const card = document.createElement('div');
-        card.className = `country-card`;
-        card.innerHTML = `
-            <img src="${item.pic}" style="width:100%; height:100%; object-fit:cover; opacity:0.3; position:absolute; top:0; left:0; z-index:-1;">
-            <div style="padding: 20px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; position: relative; z-index: 2;">
-                <span style="font-size: 0.7rem; color: var(--gold);">${item.difficulty} • ${item.time}</span>
-                <h2 class="font-mileast" style="margin: 5px 0;">${item.country}</h2>
-                <p style="margin: 0; font-size: 0.9rem;">${item.dessert}</p>
-                ${isCollected ? '<span style="color:var(--gold); font-weight:bold; margin-top:10px;">[ STAMPED ]</span>' : ''}
-            </div>
-        `;
+        card.className = 'country-card';
+        card.innerHTML = `<h3>${item.country}</h3><p>${item.dessert}</p>`;
         card.onclick = () => startTransit(item);
         grid.appendChild(card);
     });
 }
 
-function showAbout() {
-    hideAll();
-    document.getElementById('about-page').classList.remove('hidden');
-}
-
-function showBakeryMap() {
-    hideAll();
-    document.getElementById('bakery-page').classList.remove('hidden');
-}
-
-function returnToTerminal() {
-    hideAll();
-    document.getElementById('terminal').classList.remove('hidden');
-    initAtlas();
-    window.scrollTo(0,0);
-}
-
-function hideAll() {
-    const pages = ['terminal', 'bakery-page', 'recipe-page', 'about-page'];
-    pages.forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.classList.add('hidden');
-    });
-}
-
-// --- PASSPORT & TRANSIT ---
-
 function startTransit(item) {
     const overlay = document.getElementById('transit-overlay');
-    const target = document.getElementById('target-country');
-    if (target) target.innerText = item.country;
-    if (overlay) overlay.classList.remove('hidden');
-
+    document.getElementById('target-country').innerText = item.country;
+    overlay.classList.remove('hidden');
     setTimeout(() => {
-        if (overlay) overlay.classList.add('hidden');
+        overlay.classList.add('hidden');
         showDossier(item);
-    }, 2500);
+    }, 2000);
 }
 
 function showDossier(item) {
-    hideAll();
-    const page = document.getElementById('recipe-page');
-    const content = document.getElementById('recipe-content');
-    if (page) page.classList.remove('hidden');
-    
-    const recipeHTML = item.recipe.map(step => `<li>${step}</li>`).join('');
-    if (content) {
-        content.innerHTML = `
-            <h1 class="font-mileast" style="font-size: 3.5rem;">${item.dessert}</h1>
-            <p style="color: var(--gold); font-style: italic;">"${item.desc}"</p>
-            <img src="${item.pic}" class="dossier-img-centered">
-            <div style="max-width: 600px; margin: 20px auto; text-align: left; background: rgba(255,255,255,0.05); padding: 30px; border: 1px solid var(--gold);">
-                <h3>RECIPE DOSSIER</h3>
-                <p><strong>ORIGIN:</strong> ${item.country}</p>
-                <ul>${recipeHTML}</ul>
-            </div>
-            <button onclick="claimStamp('${item.country}')" class="gold-btn">STAMP PASSPORT</button>
-        `;
-    }
+    document.getElementById('terminal').classList.add('hidden');
+    document.getElementById('recipe-page').classList.remove('hidden');
+    document.getElementById('recipe-content').innerHTML = `<h1>${item.dessert}</h1>`;
 }
 
-function claimStamp(country) {
-    stamps.add(country);
-    updatePassportUI();
-    returnToTerminal();
-}
+function showAbout() { hideAll(); document.getElementById('about-page').classList.remove('hidden'); }
+function showBakeryMap() { hideAll(); document.getElementById('bakery-page').classList.remove('hidden'); }
+function returnToTerminal() { hideAll(); document.getElementById('terminal').classList.remove('hidden'); }
 
-function updatePassportUI() {
-    const count = document.getElementById('stamp-count');
-    const fill = document.getElementById('progress-fill');
-    const rank = document.getElementById('explorer-rank');
-    
-    if (count) count.innerText = stamps.size;
-    if (fill) fill.style.width = `${(stamps.size / 30) * 100}%`;
-    
-    if (rank) {
-        if (stamps.size > 20) rank.innerText = "GRAND AMBASSADOR";
-        else if (stamps.size > 10) rank.innerText = "WORLD VOYAGER";
-        else if (stamps.size > 0) rank.innerText = "SWEET EXPLORER";
-    }
+function hideAll() {
+    ['terminal', 'bakery-page', 'recipe-page', 'about-page'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
 }
-
-// --- ROULETTE ---
-const rBtn = document.getElementById('roulette-btn');
-if (rBtn) {
-    rBtn.onclick = () => {
-        const loader = document.getElementById('roulette-loader');
-        if (loader) loader.classList.remove('hidden');
-        setTimeout(() => {
-            if (loader) loader.classList.add('hidden');
-            const random = atlasData[Math.floor(Math.random() * atlasData.length)];
-            startTransit(random);
-        }, 2000);
-    };
-}
-
-// --- EFFECTS ---
-function createHeroEffects() {
-    const hero = document.querySelector('.hero-centered');
-    if(!hero || hero.querySelector('.node')) return; // Don't double-add nodes
-    for (let i = 0; i < 12; i++) {
-        let node = document.createElement('div');
-        node.className = 'node';
-        node.style.top = Math.random() * 100 + "%";
-        node.style.left = Math.random() * 100 + "%";
-        node.style.animationDelay = Math.random() * 5 + "s";
-        hero.appendChild(node);
-    }
-}
-
-// Initial start logic
-window.onload = () => {
-    // Make sure nav and terminal are hidden at the very start
-    const nav = document.getElementById('main-nav');
-    const terminal = document.getElementById('terminal');
-    if (nav) nav.classList.add('hidden');
-    if (terminal) terminal.classList.add('hidden');
-};
