@@ -5,7 +5,7 @@ const atlasData = [
     { country: "Turkey", dessert: "Baklava", time: "3 hrs", difficulty: "Expert", pic: "turkey 1.jpg", desc: "Flaky nut pastry with syrup", recipe: ["Layer phyllo sheets", "Add chopped nuts", "Bake until golden", "Pour honey syrup"] },
     { country: "Mexico", dessert: "Churros", time: "45 mins", difficulty: "Easy", pic: "mexico 1.jpg", desc: "Crispy fried cinnamon sticks", recipe: ["Make dough", "Pipe into hot oil", "Fry until golden", "Roll in cinnamon sugar"] },
     { country: "Brazil", dessert: "Brigadeiro", time: "30 mins", difficulty: "Easy", pic: "brazil 1.jpg", desc: "Chocolate truffle balls", recipe: ["Cook condensed milk + cocoa", "Stir until thick", "Cool", "Roll into balls"] },
-    { country: "United States", dessert: "Apple Pie", time: "2 hrs", difficulty: "Medium", pic: "US 1.jpg", desc: "Warm spiced apple dessert", recipe: ["Cook apples + sugar + cinnamon", "Place in crust", "Cover and bake"] },
+    { country: "United States", dessert: "Apple Pie", time: "2 hrs", difficulty: "Medium", pic: "apple pie.jpg", desc: "Warm spiced apple dessert", recipe: ["Cook apples + sugar + cinnamon", "Place in crust", "Cover and bake"] },
     { country: "Philippines", dessert: "Leche Flan", time: "1 hr", difficulty: "Easy", pic: "Philippines 1.jpg", desc: "Caramel custard dessert", recipe: ["Caramelize sugar", "Mix eggs + condensed milk", "Steam until set"] },
     { country: "Spain", dessert: "Basque Cheesecake", time: "1.5 hrs", difficulty: "Medium", pic: "spain 1.jpg", desc: "Burnt-top creamy cheesecake", recipe: ["Mix cream cheese + sugar + eggs", "Pour into pan", "Bake at high heat"] },
     { country: "United Kingdom", dessert: "Sticky Toffee Pudding", time: "1.5 hrs", difficulty: "Medium", pic: "UK 1.jpg", desc: "Soft cake with toffee sauce", recipe: ["Bake date cake", "Make toffee sauce", "Pour over cake"] },
@@ -27,7 +27,7 @@ const atlasData = [
     { country: "Canada", dessert: "Butter Tart", time: "1 hr", difficulty: "Easy", pic: "Canada 1.jpg", desc: "Sweet syrup tart", recipe: ["Make pastry shell", "Fill with butter + sugar + egg", "Bake"] },
     { country: "Argentina", dessert: "Alfajor", time: "1.5 hrs", difficulty: "Medium", pic: "argentina 1.jpg", desc: "Dulce de leche sandwich cookies", recipe: ["Bake cookies", "Fill with dulce de leche", "Sandwich"] },
     { country: "Peru", dessert: "Suspiro Limeño", time: "1 hr", difficulty: "Medium", pic: "peru 1.jpg", desc: "Caramel cream dessert", recipe: ["Cook milk + sugar", "Add meringue topping"] },
-    { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: ".jpg", desc: "Honey sesame pastry", recipe: ["Shape dough", "Fry", "Coat in honey + sesame"] },
+    { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "chebakia.jpg", desc: "Honey sesame pastry", recipe: ["Shape dough", "Fry", "Coat in honey + sesame"] },
     { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "morocco 1.jpg", desc: "Soft cake with cream sauce", recipe: ["Bake sponge cake", "Pour warm cream sauce"] }
 ];
 const grid = document.getElementById('dest-grid');
@@ -152,7 +152,11 @@ document.getElementById('roulette-btn').onclick = () => {
 function createHeroEffects() {
     const hero = document.querySelector('.hero-centered');
     if(!hero) return;
-    for (let i = 0; i < 12; i++) {
+
+    // This line clears old dots so they don't stack up and lag your site!
+    hero.querySelectorAll('.node').forEach(n => n.remove()); 
+
+    for (let i = 0; i < 15; i++) { // Increased to 15 for extra glow
         let node = document.createElement('div');
         node.className = 'node';
         node.style.top = Math.random() * 100 + "%";
