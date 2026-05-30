@@ -102,14 +102,20 @@ function updatePassport() {
     else if (count > 10) rankLabel.innerText = "WORLD VOYAGER";
     else if (count > 0) rankLabel.innerText = "SWEET EXPLORER";
 }
-
 function startTransit(item) {
     const overlay = document.getElementById('transit-overlay');
-    document.getElementById('target-country').innerText = item.country;
-    overlay.classList.remove('hidden');
+    const targetText = document.getElementById('target-country');
+
+    // 1. Set the country name in your HTML
+    if (targetText) targetText.innerText = item.country.toUpperCase();
+    
+    // 2. Remove "hidden" to show the screen
+    if (overlay) overlay.classList.remove('hidden'); 
+    
+    // 3. Wait 2.5 seconds, then hide it and show the recipe
     setTimeout(() => {
-        overlay.classList.add('hidden');
-        showDossier(item);
+        if (overlay) overlay.classList.add('hidden'); 
+        showDossier(item); 
     }, 2500);
 }
 
