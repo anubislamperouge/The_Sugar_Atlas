@@ -7,14 +7,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <section id="intro-page" class="intro-screen">
+        <div class="intro-content">
+            <h1 class="font-mileast fade-in">Welcome to The Sugar Atlas</h1>
+            <p class="subtitle fade-in-delay">A journey through the world’s sweetest desserts</p>
+            <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
+            <p class="intro-desc fade-in-delay-2">Travel across countries, unlock desserts, and collect passport stamps as you explore global pastry culture.</p>
+            <div class="intro-btns fade-in-delay-3">
+                <button onclick="enterHub()" class="gold-btn">START JOURNEY</button>
+                <button onclick="enterHub()" class="skip-link" style="background:none; border:none; color:var(--gold); cursor:pointer; text-decoration:underline; margin-left:15px;">SKIP</button>
+            </div>
+        </div>
+    </section>
+
     <div id="particles-js"></div>
 
-    <nav>
+    <nav id="main-nav" class="hidden">
         <div class="nav-left">
-            <div class="logo font-mileast">THE SUGAR ATLAS</div>
+            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer">THE SUGAR ATLAS</div>
             <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
         </div>
         <div class="nav-right">
+            <button onclick="showBakeryMap()" class="nav-map-btn" style="background:none; border:1px solid var(--gold); color:var(--gold); padding:8px 15px; margin-right:20px; cursor:pointer;">📍 NEAR ME</button>
+            
             <div class="passport-stats">
                 <span class="stat-label">STAMPS</span>
                 <span id="stamp-count">0</span><span class="total">/30</span>
@@ -23,7 +38,7 @@
         </div>
     </nav>
 
-    <main id="terminal">
+    <main id="terminal" class="hidden">
         <section class="hero hero-centered">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
             <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
@@ -32,6 +47,38 @@
 
         <div class="destination-grid" id="dest-grid"></div>
     </main>
+
+    <section id="bakery-page" class="hidden">
+        <div class="bakery-header hero-centered">
+            <h1 class="font-mileast">SUGAR ATLAS: NEAR YOU</h1>
+            <p class="subtitle">Real-world pastry destinations in the UAE</p>
+            <button onclick="returnToTerminal()" class="gold-btn mini" style="margin-bottom:40px;">RETURN TO ATLAS</button>
+        </div>
+
+        <div class="bakery-grid">
+            <div class="bakery-card">
+                <div class="location-pin">📍 DUBAI</div>
+                <h3>L’ETO Café</h3>
+                <p class="bakery-vibe">Luxury dessert café with a floral atmosphere.</p>
+                <p><strong>SIGNATURE:</strong> Lotus Cheesecake</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+            <div class="bakery-card">
+                <div class="location-pin">📍 ABU DHABI</div>
+                <h3>Switch</h3>
+                <p class="bakery-vibe">Modern, futuristic dining experience.</p>
+                <p><strong>SIGNATURE:</strong> Camel Milk Chocolate</p>
+                <div class="rating">⭐⭐⭐⭐</div>
+            </div>
+            <div class="bakery-card">
+                <div class="location-pin">📍 DUBAI</div>
+                <h3>Home Bakery</h3>
+                <p class="bakery-vibe">Cozy, rustic vibes and homemade goodness.</p>
+                <p><strong>SIGNATURE:</strong> Chewy Melt Cookies</p>
+                <div class="rating">⭐⭐⭐⭐⭐</div>
+            </div>
+        </div>
+    </section>
 
     <div id="transit-overlay" class="hidden">
         <div class="flight-path">
