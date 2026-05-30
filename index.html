@@ -18,21 +18,27 @@
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
             <div class="description-section">
                 <p>Welcome to a curated global transit of taste. Explore 30 iconic desserts from across the map, collect your digital passport stamps, and master the art of international baking.</p>
+                <button id="roulette-btn" class="back-btn" style="background: #c5a059; color: black; margin-top: 20px;">✈️ SUGAR ROULETTE</button>
             </div>
         </section>
 
-        <div class="destination-grid" id="dest-grid">
-            </div>
+        <div class="destination-grid" id="dest-grid"></div>
     </main>
 
     <div id="transit-overlay" class="hidden">
-        <div class="plane">✈️</div>
+        <div class="plane" style="font-size: 4rem; margin-bottom: 20px;">✈️</div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
     </div>
 
+    <div id="roulette-loader" class="hidden">
+        <div class="loader-circle"></div>
+        <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
+    </div>
+
     <section id="recipe-page" class="hidden">
+        <button onclick="returnToTerminal()" class="back-btn" style="position: absolute; top: 120px; left: 5%;">← CLOSE DOSSIER</button>
+        
         <div class="recipe-container">
-            <button onclick="returnToTerminal()" class="back-btn">← RETURN TO TERMINAL</button>
             <div id="recipe-content"></div>
         </div>
     </section>
