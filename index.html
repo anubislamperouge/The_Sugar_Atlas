@@ -3,30 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Sugar Atlas | Global Transit</title>
+    <title>The Sugar Atlas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <div class="nav-left">
-            <div class="logo font-mileast">THE SUGAR ATLAS</div>
-            <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
-        </div>
-        <div class="nav-right">
-            <div class="passport-stats">
-                <span class="stat-label">STAMPS: </span>
-                <span id="stamp-count">0</span><span class="total">/30</span>
-                <div class="progress-bar-mini"><div id="progress-fill"></div></div>
-            </div>
-        </div>
+        <div class="logo font-mileast">THE SUGAR ATLAS</div>
+        <div class="passport-stats">STAMPS: <span id="stamp-count">0</span>/30</div>
     </nav>
 
     <main id="terminal">
-        <section class="hero-centered">
+        <section class="hero">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
-            <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
-            <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
+            <div class="description-section">
+                <p>Welcome to a curated global transit of taste. Explore 30 iconic desserts from across the map, collect your digital passport stamps, and master the art of international baking.</p>
+            </div>
         </section>
 
         <div class="destination-grid" id="dest-grid">
@@ -34,19 +26,15 @@
     </main>
 
     <div id="transit-overlay" class="hidden">
-        <div class="plane-animation">✈️</div>
+        <div class="plane">✈️</div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
     </div>
 
-    <div id="roulette-loader" class="hidden">
-        <div class="loader-circle"></div>
-        <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
-    </div>
-
     <section id="recipe-page" class="hidden">
-        <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
-        <div id="recipe-content" class="centered-content">
-            </div>
+        <div class="recipe-container">
+            <button onclick="returnToTerminal()" class="back-btn">← RETURN TO TERMINAL</button>
+            <div id="recipe-content"></div>
+        </div>
     </section>
 
     <script src="script.js"></script>
