@@ -29,7 +29,6 @@ body {
     text-transform: uppercase;
 }
 
-/* --- NEW: INTRO PAGE STYLES --- */
 .intro-screen {
     position: fixed;
     inset: 0;
@@ -37,20 +36,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10000; /* Stays on top of everything */
+    z-index: 10000;
     text-align: center;
+    transition: opacity 0.8s ease;
 }
 
 .intro-content { max-width: 800px; padding: 40px; }
+.intro-desc { font-style: italic; letter-spacing: 1px; margin: 30px 0; opacity: 0.8; }
 
-.intro-desc {
-    font-style: italic;
-    letter-spacing: 1px;
-    margin: 30px 0;
-    opacity: 0.8;
-}
-
-/* --- HERO SECTION --- */
 .hero-centered {
     position: relative;
     display: flex;
@@ -58,7 +51,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 120px 20px;
-    overflow: hidden;
     z-index: 1;
 }
 
@@ -72,28 +64,18 @@ body {
     background-size: contain;
     opacity: 0.07;
     z-index: -1;
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.2));
 }
 
-.subtitle::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    margin: 25px auto 0;
-    box-shadow: 0 0 8px var(--gold);
-}
+/* FIXED: This removes the extra line at the bottom */
+.subtitle::after { display: none !important; }
 
-/* --- NODES & ANIMATIONS --- */
 .node {
     position: absolute;
-    width: 5px;
-    height: 5px;
+    width: 5px; height: 5px;
     background: var(--gold);
     border-radius: 50%;
     box-shadow: 0 0 15px var(--gold);
-    z-index: -1; 
+    z-index: -1;  
     animation: pulseNode 3s infinite ease-in-out, floatNode 10s infinite linear;
     opacity: 0.6;
 }
@@ -109,21 +91,30 @@ body {
     50% { opacity: 1; transform: scale(1.8); box-shadow: 0 0 20px var(--bright-gold); }
 }
 
-/* --- UI ELEMENTS --- */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 5%;
+    padding: 1.5rem 5%;
     background: rgba(2, 6, 23, 0.8);
     backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 100;
 }
 
-#explorer-rank {
+.nav-map-btn {
+    background: none;
+    border: 1px solid var(--gold);
     color: var(--gold);
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+    padding: 8px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
 }
+
+.nav-map-btn:hover { background: var(--gold); color: black; }
 
 .destination-grid {
     display: grid;
@@ -137,16 +128,11 @@ nav {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(212, 175, 55, 0.2);
     overflow: hidden; cursor: pointer;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s;
 }
 
-.country-card:hover {
-    transform: translateY(-15px);
-    border-color: var(--gold);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-}
+.country-card:hover { transform: translateY(-10px); border-color: var(--gold); }
 
-/* --- NEW: BAKERY PAGE STYLES --- */
 .bakery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -157,86 +143,35 @@ nav {
 .bakery-card {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(212, 175, 55, 0.2);
-    padding: 30px;
-    text-align: left;
-    transition: 0.3s;
+    padding: 30px; text-align: left;
 }
 
-.bakery-card:hover {
-    border-color: var(--gold);
-    background: rgba(212, 175, 55, 0.05);
-}
+.recipe-wrapper { display: flex; flex-direction: column; align-items: center; padding: 100px 10%; }
+.dossier-img-centered { width: 100%; max-width: 800px; height: 500px; object-fit: cover; border: 1px solid var(--gold); margin: 40px 0; }
 
-.location-pin {
-    font-size: 0.7rem;
-    color: var(--gold);
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-}
-
-/* --- RECIPE DOSSIER --- */
-.recipe-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 100px 10%;
-}
-
-.dossier-img-centered {
-    width: 100%;
-    max-width: 800px;
-    height: 500px;
-    object-fit: cover;
-    border: 1px solid var(--gold);
-    margin: 40px 0;
-}
-
-#recipe-content ul {
-    list-style-type: square;
-    color: var(--beige);
-    text-align: left;
-}
-
-.close-btn {
-    position: absolute; top: 120px; left: 5%;
-    background: none; border: 1px solid var(--gold);
-    color: var(--gold); padding: 10px 20px; cursor: pointer;
-    z-index: 10;
-}
-
-/* --- UTILITIES & OVERLAYS --- */
-#transit-overlay, #roulette-loader {
+#hub-loader {
     position: fixed; inset: 0;
     background: var(--midnight);
+    z-index: 15000;
     display: flex; flex-direction: column;
-    justify-content: center; align-items: center; z-index: 9999;
+    justify-content: center; align-items: center;
 }
 
 .loader-circle {
-    width: 60px; height: 60px;
-    border: 5px solid var(--gold);
-    border-top: 5px solid transparent;
+    width: 50px; height: 50px;
+    border: 4px solid var(--gold);
+    border-top: 4px solid transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 20px;
 }
 @keyframes spin { 100% { transform: rotate(360deg); } }
 
-.gold-btn {
-    background: var(--gold); color: black;
-    padding: 15px 40px; border: none;
-    font-weight: bold; cursor: pointer; margin-top: 20px;
-    transition: 0.3s;
-}
-
-.gold-btn:hover {
-    background: var(--bright-gold);
-    transform: scale(1.05);
-}
+.gold-btn { background: var(--gold); color: black; padding: 15px 40px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
+.gold-btn:hover { background: var(--bright-gold); transform: scale(1.05); }
 
 .hidden { display: none !important; }
 
-/* FADE ANIMATIONS FOR INTRO */
 .fade-in { animation: fadeIn 2s ease-out; }
 .fade-in-delay { animation: fadeIn 2s ease-out 1s both; }
 .fade-in-delay-2 { animation: fadeIn 2s ease-out 2s both; }
