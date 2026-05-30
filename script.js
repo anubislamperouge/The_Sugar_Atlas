@@ -53,19 +53,38 @@ function initAtlas() {
         grid.appendChild(card);
     });
 }
-
+// 1. Updated enterHub function with "Safety Logic"
 function enterHub() {
+    console.log("Journey Started!"); // This checks if the button works
+    
     const intro = document.getElementById('intro-page');
     const loader = document.getElementById('hub-loader');
-    intro.style.opacity = '0';
+    const nav = document.getElementById('main-nav');
+    const terminal = document.getElementById('terminal');
+
+    // Fade out the intro
+    if (intro) {
+        intro.style.transition = "opacity 0.8s";
+        intro.style.opacity = '0';
+    }
+
     setTimeout(() => {
-        intro.classList.add('hidden');
-        loader.classList.remove('hidden');
+        if (intro) intro.classList.add('hidden');
+        if (loader) loader.classList.remove('hidden');
+        console.log("Loading screen showing...");
+
         setTimeout(() => {
-            loader.classList.add('hidden');
-            document.getElementById('main-nav').classList.remove('hidden');
-            document.getElementById('terminal').classList.remove('hidden');
-            initAtlas();
+            if (loader) loader.classList.add('hidden');
+            
+            // SHOW THE GOODS
+            if (nav) nav.classList.remove('hidden');
+            if (terminal) terminal.classList.remove('hidden');
+            
+            console.log("Terminal is now live!");
+            
+            // Start the app functions
+            if (typeof initAtlas === "function") initAtlas();
+            if (typeof createHeroEffects === "function") createHeroEffects();
         }, 2000);
     }, 800);
 }
@@ -167,3 +186,9 @@ function createHeroEffects() {
 }
 
 createHeroEffects();
+
+window.onload = () => {
+    console.log("Page Loaded & Ready");
+    // We don't need to force-hide things here because 
+    // we already put 'hidden' in the HTML tags!
+};
