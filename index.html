@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="particles-js"></div>
 
     <nav>
         <div class="nav-left">
@@ -24,28 +23,29 @@
     </nav>
 
     <main id="terminal">
-        <section class="hero">
+        <section class="hero-centered">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
             <p class="subtitle">A curated global transit of taste. Explore the world's finest confections.</p>
             <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
 
-        <div class="destination-grid" id="dest-grid">
-            </div>
+        <div class="destination-grid" id="dest-grid"></div>
     </main>
 
     <div id="transit-overlay" class="hidden">
-        <div class="flight-path">
-            <div class="plane">✈️</div>
-        </div>
+        <div class="plane-animation">✈️</div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
+        <p>PREPARING CULINARY DOSSIER...</p>
+    </div>
+
+    <div id="roulette-loader" class="hidden">
+        <div class="loader-circle"></div>
+        <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
     </div>
 
     <section id="recipe-page" class="hidden">
-        <div class="recipe-wrapper">
-            <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
-            <div id="recipe-content"></div>
-        </div>
+        <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
+        <div id="recipe-content" class="centered-content"></div>
     </section>
 
     <script src="script.js"></script>
