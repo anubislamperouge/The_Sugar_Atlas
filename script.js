@@ -1,10 +1,34 @@
 const atlasData = [
-    { country: "France", dessert: "Macaron", time: "2h", difficulty: "Expert", pic: "images/france.jpg" },
-    { country: "Japan", dessert: "Matcha Mochi", time: "1h", difficulty: "Medium", pic: "images/japan.jpg" },
-    { country: "Italy", dessert: "Tiramisu", pic: "images/italy.jpg", time: "45m", difficulty: "Easy" },
-    { country: "Turkey", dessert: "Baklava", pic: "images/turkey.jpg", time: "3h", difficulty: "Hard" },
-    { country: "Mexico", dessert: "Churros", pic: "images/mexico.jpg", time: "30m", difficulty: "Easy" }
-    // Add more to reach 30!
+    { country: "France", dessert: "Macaron", time: "2.5–3 hrs", difficulty: "Expert", pic: "images/france.jpg" },
+    { country: "Italy", dessert: "Tiramisu", time: "1 hr", difficulty: "Medium", pic: "images/italy.jpg" },
+    { country: "Japan", dessert: "Mochi", time: "1–1.5 hrs", difficulty: "Medium", pic: "images/japan.jpg" },
+    { country: "Turkey", dessert: "Baklava", time: "3 hrs", difficulty: "Expert", pic: "images/turkey.jpg" },
+    { country: "Mexico", dessert: "Churros", time: "45 mins", difficulty: "Easy", pic: "images/mexico.jpg" },
+    { country: "Brazil", dessert: "Brigadeiro", time: "30 mins", difficulty: "Easy", pic: "images/brazil.jpg" },
+    { country: "United States", dessert: "Apple Pie", time: "2 hrs", difficulty: "Medium", pic: "images/usa.jpg" },
+    { country: "Philippines", dessert: "Leche Flan", time: "1 hr", difficulty: "Easy", pic: "images/philippines.jpg" },
+    { country: "Spain", dessert: "Basque Cheesecake", time: "1.5 hrs", difficulty: "Medium", pic: "images/spain.jpg" },
+    { country: "United Kingdom", dessert: "Sticky Toffee Pudding", time: "1.5 hrs", difficulty: "Medium", pic: "images/uk.jpg" },
+    { country: "Germany", dessert: "Black Forest Cake", time: "3 hrs", difficulty: "Expert", pic: "images/germany.jpg" },
+    { country: "Austria", dessert: "Sachertorte", time: "3 hrs", difficulty: "Expert", pic: "images/austria.jpg" },
+    { country: "Belgium", dessert: "Belgian Waffle", time: "40 mins", difficulty: "Easy", pic: "images/belgium.jpg" },
+    { country: "Greece", dessert: "Galaktoboureko", time: "2.5 hrs", difficulty: "Expert", pic: "images/greece.jpg" },
+    { country: "Portugal", dessert: "Pastel de Nata", time: "2 hrs", difficulty: "Medium", pic: "images/portugal.jpg" },
+    { country: "India", dessert: "Gulab Jamun", time: "1.5 hrs", difficulty: "Medium", pic: "images/india.jpg" },
+    { country: "China", dessert: "Tangyuan", time: "1 hr", difficulty: "Medium", pic: "images/china.jpg" },
+    { country: "South Korea", dessert: "Hotteok", time: "45 mins", difficulty: "Easy", pic: "images/korea.jpg" },
+    { country: "Thailand", dessert: "Mango Sticky Rice", time: "1 hr", difficulty: "Easy", pic: "images/thailand.jpg" },
+    { country: "Vietnam", dessert: "Che Ba Mau", time: "45 mins", difficulty: "Easy", pic: "images/vietnam.jpg" },
+    { country: "Indonesia", dessert: "Klepon", time: "1 hr", difficulty: "Medium", pic: "images/indonesia.jpg" },
+    { country: "Malaysia", dessert: "Kuih Seri Muka", time: "2.5 hrs", difficulty: "Expert", pic: "images/malaysia.jpg" },
+    { country: "Singapore", dessert: "Ondeh-Ondeh", time: "1 hr", difficulty: "Medium", pic: "images/singapore.jpg" },
+    { country: "Australia", dessert: "Pavlova", time: "2 hrs", difficulty: "Medium", pic: "images/australia.jpg" },
+    { country: "New Zealand", dessert: "Lamington", time: "1.5 hrs", difficulty: "Medium", pic: "images/nz.jpg" },
+    { country: "Canada", dessert: "Butter Tart", time: "1 hr", difficulty: "Easy", pic: "images/canada.jpg" },
+    { country: "Argentina", dessert: "Alfajor", time: "1.5 hrs", difficulty: "Medium", pic: "images/argentina.jpg" },
+    { country: "Peru", dessert: "Suspiro Limeño", time: "1 hr", difficulty: "Medium", pic: "images/peru.jpg" },
+    { country: "Morocco", dessert: "Chebakia", time: "2.5 hrs", difficulty: "Expert", pic: "images/morocco.jpg" },
+    { country: "South Africa", dessert: "Malva Pudding", time: "1 hr", difficulty: "Easy", pic: "images/sa.jpg" }
 ];
 
 const grid = document.getElementById('dest-grid');
@@ -52,7 +76,6 @@ function startTransit(item) {
     }, 2500);
 }
 
-// UPDATED DOSSIER: Centered image and button at bottom
 function showDossier(item) {
     document.getElementById('terminal').classList.add('hidden');
     const page = document.getElementById('recipe-page');
@@ -86,7 +109,7 @@ function returnToTerminal() {
     window.scrollTo(0,0);
 }
 
-// UPDATED ROULETTE: Shows Loading Page first
+// ROULETTE LOGIC
 document.getElementById('roulette-btn').onclick = () => {
     const loader = document.getElementById('roulette-loader');
     loader.classList.remove('hidden');
@@ -94,8 +117,24 @@ document.getElementById('roulette-btn').onclick = () => {
     setTimeout(() => {
         loader.classList.add('hidden');
         const random = atlasData[Math.floor(Math.random() * atlasData.length)];
-        startTransit(random); // Moves to Departing screen after loading
+        startTransit(random);
     }, 2000);
-};
+}; // <--- Fixed the missing bracket here!
 
+// HERO EFFECTS
+function createHeroEffects() {
+    const hero = document.querySelector('.hero-centered');
+    if(!hero) return; // Safety check
+    for (let i = 0; i < 8; i++) {
+        let node = document.createElement('div');
+        node.className = 'node';
+        node.style.top = Math.random() * 80 + 10 + "%";
+        node.style.left = Math.random() * 80 + 10 + "%";
+        node.style.animationDelay = Math.random() * 3 + "s";
+        hero.appendChild(node);
+    }
+}
+
+// START THE APP
+createHeroEffects();
 initAtlas();
