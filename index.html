@@ -15,7 +15,7 @@
         </div>
         <div class="nav-right">
             <div class="passport-stats">
-                <span class="stat-label">STAMPS</span>
+                <span class="stat-label">STAMPS: </span>
                 <span id="stamp-count">0</span><span class="total">/30</span>
                 <div class="progress-bar-mini"><div id="progress-fill"></div></div>
             </div>
@@ -29,13 +29,13 @@
             <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
 
-        <div class="destination-grid" id="dest-grid"></div>
+        <div class="destination-grid" id="dest-grid">
+            </div>
     </main>
 
     <div id="transit-overlay" class="hidden">
         <div class="plane-animation">✈️</div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
-        <p>PREPARING CULINARY DOSSIER...</p>
     </div>
 
     <div id="roulette-loader" class="hidden">
@@ -45,7 +45,8 @@
 
     <section id="recipe-page" class="hidden">
         <button onclick="returnToTerminal()" class="close-btn">CLOSE DOSSIER</button>
-        <div id="recipe-content" class="centered-content"></div>
+        <div id="recipe-content" class="centered-content">
+            </div>
     </section>
 
     <script src="script.js"></script>
