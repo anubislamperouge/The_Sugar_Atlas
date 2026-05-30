@@ -121,16 +121,25 @@ document.getElementById('roulette-btn').onclick = () => {
     }, 2000);
 }; // <--- Fixed the missing bracket here!
 
-// HERO EFFECTS
 function createHeroEffects() {
     const hero = document.querySelector('.hero-centered');
-    if(!hero) return; // Safety check
-    for (let i = 0; i < 8; i++) {
+    if(!hero) return;
+    
+    // We'll create 12 nodes instead of 8 to make it feel a bit more full
+    for (let i = 0; i < 12; i++) {
         let node = document.createElement('div');
         node.className = 'node';
-        node.style.top = Math.random() * 80 + 10 + "%";
-        node.style.left = Math.random() * 80 + 10 + "%";
-        node.style.animationDelay = Math.random() * 3 + "s";
+        // Random positioning across the full hero area
+        node.style.top = Math.random() * 100 + "%";
+        node.style.left = Math.random() * 100 + "%";
+        // Random size variation for depth
+        const size = Math.random() * 4 + 2; 
+        node.style.width = size + 'px';
+        node.style.height = size + 'px';
+        // Random timing so they don't all pulse at once
+        node.style.animationDelay = Math.random() * 5 + "s";
+        node.style.animationDuration = (Math.random() * 3 + 2) + "s, " + (Math.random() * 5 + 8) + "s";
+        
         hero.appendChild(node);
     }
 }
