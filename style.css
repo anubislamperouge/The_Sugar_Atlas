@@ -1,79 +1,105 @@
+/* Minimalist Dark Palette */
 :root {
-    --bg-dark: #0a192f;
-    --accent-beige: #e6e1d3;
-    --text-light: #f8f9fa;
-    --navy-blue: #172a45;
+    --midnight: #050a14;
+    --deep-blue: #0f172a;
+    --gold: #c5a059;
+    --beige: #e5e1d8;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--accent-beige);
-    font-family: 'Inter', sans-serif;
+    /* VISIBLE GRADIENT */
+    background: linear-gradient(135deg, var(--midnight) 0%, var(--deep-blue) 100%);
+    color: var(--beige);
+    font-family: 'Helvetica Neue', sans-serif;
     margin: 0;
-    overflow-x: hidden;
+    text-align: center; /* Center alignment */
+    min-height: 100vh;
+}
+
+/* Custom Font Style for 'Mileast' Vibe */
+.font-mileast {
+    font-family: 'Times New Roman', serif; /* Placeholder for Mileast */
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 300;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 5%;
-    border-bottom: 1px solid rgba(230, 225, 211, 0.2);
+    padding: 30px 10%;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.3);
 }
 
-/* The Game Grid */
+.hero {
+    margin-top: 80px;
+    margin-bottom: 50px;
+}
+
 .destination-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 5%;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 0 10% 100px 10%;
 }
 
 .country-card {
-    background: var(--navy-blue);
-    padding: 30px;
-    border: 1px solid var(--accent-beige);
-    text-align: center;
+    border: 1px solid rgba(229, 225, 216, 0.2);
+    padding: 40px 20px;
     cursor: pointer;
-    transition: all 0.4s ease; /* Hover effect [cite: 49] */
+    transition: 0.4s ease;
 }
 
 .country-card:hover {
-    background: var(--accent-beige);
-    color: var(--bg-dark);
-    transform: scale(1.05);
+    border-color: var(--gold);
+    background: rgba(197, 160, 89, 0.1);
 }
 
-/* Transit Animation [cite: 20] */
+/* Recipe Centering */
+.recipe-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center Content */
+}
+
+.dessert-pic {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    object-fit: cover;
+    margin: 30px 0;
+    border: 1px solid var(--gold);
+}
+
+.recipe-box {
+    text-align: center;
+    line-height: 1.8;
+    max-width: 600px;
+}
+
+/* Transit Screen */
 #transit-overlay {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: var(--bg-dark);
+    inset: 0;
+    background: var(--midnight);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 1000;
+    z-index: 999;
 }
 
-.plane-icon {
-    font-size: 5rem;
-    animation: fly 2s infinite linear;
+.hidden { display: none; }
+
+.plane {
+    font-size: 4rem;
+    animation: fly 2s infinite ease-in-out;
 }
 
 @keyframes fly {
     0% { transform: translateX(-100vw); }
     100% { transform: translateX(100vw); }
-}
-
-.hidden { display: none !important; }
-
-/* Recipe Page */
-#recipe-page { padding: 5%; animation: fadeIn 1s; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-.stamp-unlocked {
-    background: gold !important;
-    color: black;
 }
