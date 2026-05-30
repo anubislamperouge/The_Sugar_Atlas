@@ -16,8 +16,8 @@
         <div class="intro-content">
             <h1 class="font-mileast fade-in">Welcome to The Sugar Atlas</h1>
             <p class="subtitle fade-in-delay">A journey through the world’s sweetest desserts</p>
-            <div style="width: 50px; height: 1px; background: var(--gold); margin: 20px auto;"></div>
-            <p class="intro-desc fade-in-delay-2">Travel across countries, unlock desserts, and collect passport stamps as you explore global pastry culture.</p>
+            <div style="width: 50px; height: 1px; background: #d4af37; margin: 20px auto;"></div>
+            <p class="intro-desc fade-in-delay-2">Travel across countries, unlock desserts, and collect passport stamps.</p>
             <div class="intro-btns fade-in-delay-3">
                 <button onclick="enterHub()" class="gold-btn">START JOURNEY</button>
             </div>
@@ -26,17 +26,14 @@
 
     <nav id="main-nav" class="hidden"> 
         <div class="nav-left">
-            <div class="logo font-mileast" onclick="location.reload()">THE SUGAR ATLAS</div>
+            <div class="logo font-mileast" onclick="location.reload()" style="cursor:pointer;">THE SUGAR ATLAS</div>
             <div class="rank-tag">RANK: <span id="explorer-rank">NOVICE TRAVELER</span></div>
         </div>
         <div class="nav-right">
             <button onclick="showAbout()" class="nav-map-btn">ℹ️ ABOUT</button>
             <button onclick="showBakeryMap()" class="nav-map-btn">📍 NEAR ME</button>
             <div class="passport-stats">
-                <span class="stat-label">STAMPS</span>
-                <div style="display: flex; align-items: baseline; gap: 5px;">
-                    <span id="stamp-count">0</span><span style="opacity:0.5">/30</span>
-                </div>
+                <span id="stamp-count">0</span><span style="opacity:0.5">/30 STAMPS</span>
                 <div class="progress-bar-mini"><div id="progress-fill"></div></div>
             </div>
         </div>
@@ -45,47 +42,38 @@
     <main id="terminal" class="hidden">
         <section class="hero hero-centered">
             <h1 class="font-mileast">CHOOSE YOUR DESTINATION</h1>
-            <p class="subtitle">A curated global transit of taste.</p>
             <button id="roulette-btn" class="gold-btn">✈️ SUGAR ROULETTE</button>
         </section>
         <div class="destination-grid" id="dest-grid"></div>
     </main>
 
-    <section id="about-page" class="hidden">
-        <div class="recipe-wrapper">
-            <h1 class="font-mileast">ABOUT THE ATLAS</h1>
-            <div class="about-box">
-                <p>The Sugar Atlas is a premium digital experience designed for culinary explorers.</p>
-                <p>Our mission is to bridge the gap between global pastry culture and local discovery.</p>
-            </div>
-            <button onclick="returnToTerminal()" class="gold-btn">BACK TO TERMINAL</button>
-        </div>
-    </section>
-
     <section id="bakery-page" class="hidden">
         <div class="bakery-header hero-centered">
             <h1 class="font-mileast">UAE SELECTION</h1>
-            <button onclick="returnToTerminal()" class="gold-btn mini">RETURN TO ATLAS</button>
+            <button onclick="returnToTerminal()" class="gold-btn">RETURN TO ATLAS</button>
         </div>
-        <div class="bakery-grid" id="bakery-list">
-             </div>
+        <div class="bakery-grid">
+            <div class="bakery-card"><h3>Home Bakery</h3><p>📍 Nationwide</p></div>
+        </div>
+    </section>
+
+    <section id="about-page" class="hidden">
+        <div class="recipe-wrapper">
+            <h1 class="font-mileast">ABOUT THE ATLAS</h1>
+            <p>Your guide to the world's finest confections.</p>
+            <button onclick="returnToTerminal()" class="gold-btn">BACK</button>
+        </div>
     </section>
 
     <section id="recipe-page" class="hidden">
         <div class="recipe-wrapper">
             <div id="recipe-content"></div>
-            <button onclick="returnToTerminal()" class="gold-btn">CLOSE DOSSIER</button>
+            <button onclick="returnToTerminal()" class="gold-btn">BACK TO ATLAS</button>
         </div>
     </section>
 
     <div id="transit-overlay" class="hidden">
-        <div class="flight-path"><div class="plane">✈️</div></div>
         <h2 class="font-mileast">DEPARTING FOR <span id="target-country">...</span></h2>
-    </div>
-
-    <div id="roulette-loader" class="hidden">
-        <div class="loader-circle"></div>
-        <h2 class="font-mileast">SCANNING THE GLOBE...</h2>
     </div>
 
     <script src="script.js"></script>
